@@ -8,10 +8,19 @@ public class Joueur extends Personnage {
 
     private int or;
     private int xp;
+    private int idjoueur;
 
-    public Joueur(int xp, int or) {
+    public Joueur(int idjoueur,int xp, int or) {
         this.xp = xp;
         this.or = or;
+    }
+
+    public int getIdjoueur() {
+        return idjoueur;
+    }
+
+    public void setIdjoueur(int idjoueur) {
+        this.idjoueur = idjoueur;
     }
 
     public int getXp() {
