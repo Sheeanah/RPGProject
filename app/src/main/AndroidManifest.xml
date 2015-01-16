@@ -20,6 +20,18 @@
             android:name=".ForestActivity"
             android:label="@string/title_activity_forest" >
         </activity>
+        <activity
+            android:name=".MineActivity"
+            android:label="@string/title_activity_mine" >
+        </activity>
+        <activity
+            android:name=".ShopActivity"
+            android:label="@string/title_activity_shop" >
+        </activity>
+        <activity
+            android:name=".ArenaActivity"
+            android:label="@string/title_activity_arena" >
+        </activity>
     </application>
 
 </manifest>
