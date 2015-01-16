@@ -1,9 +1,11 @@
-package com.example.rpgproject.rpgproject;
+package com.example.rpgproject.rpgproject.vue;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.rpgproject.rpgproject.R;
 
 
 public class ForestActivity extends ActionBarActivity {

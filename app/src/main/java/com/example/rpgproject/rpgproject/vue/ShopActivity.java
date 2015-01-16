@@ -1,24 +1,26 @@
-package com.example.rpgproject.rpgproject;
+package com.example.rpgproject.rpgproject.vue;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.rpgproject.rpgproject.R;
 
-public class MineActivity extends ActionBarActivity {
+
+public class ShopActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mine);
+        setContentView(R.layout.activity_shop);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_mine, menu);
+        getMenuInflater().inflate(R.menu.menu_shop, menu);
         return true;
     }
 
