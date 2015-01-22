@@ -9,5 +9,8 @@
     <string name="title_activity_shop">ShopActivity</string>
     <string name="title_activity_arena">ArenaActivity</string>
     <string name="title_activity_stats">StatsActivity</string>
+    <string name="str_stats_life">Vie :</string>
+    <string name="str_stats_def">Defense :</string>
+    <string name="str_stats_atk">Attaque :</string>
 
 </resources>

@@ -4,8 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.rpgproject.rpgproject.R;
+import com.example.rpgproject.rpgproject.database.RPGProjectDB;
+import com.example.rpgproject.rpgproject.modele.Joueur;
 
 public class StatsActivity extends ActionBarActivity {
 
@@ -13,6 +16,15 @@ public class StatsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
+        Joueur j= RPGProjectDB.getJoueur(getApplicationContext(),1);
+        if(j!=null){
+            TextView txt_stats_life=(TextView)findViewById(R.id.lbl_stats_life);
+            txt_stats_life.setText(txt_stats_life.getText().toString()+" "+j.getVie());
+            TextView txt_stats_atk=(TextView)findViewById(R.id.lbl_stats_atk);
+            txt_stats_atk.setText(txt_stats_atk.getText().toString()+" "+j.getAttaque());
+            TextView txt_stats_def=(TextView)findViewById(R.id.lbl_stats_def);
+            txt_stats_def.setText(txt_stats_def.getText().toString()+" "+j.getDefense());
+        }
     }
 
 

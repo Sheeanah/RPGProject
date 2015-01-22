@@ -46,17 +46,17 @@ public class Joueur extends Personnage {
 
     @Override
     public int getVie() {
-        return 0;
+        return 1;
     }
 
     @Override
     public int getAttaque() {
-        return 0;
+        return 2;
     }
 
     @Override
     public int getDefense() {
-        return 0;
+        return 1;
     }
 
     @Override
