@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mine"
-        android:id="@+id/button"
+        android:id="@+id/btn_mine"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forêt"
-        android:id="@+id/button2"
-        android:layout_below="@+id/button"
+        android:id="@+id/btn_forest"
+        android:layout_below="@+id/btn_mine"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="55dp"
         android:layout_alignParentStart="true" />
@@ -28,9 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Boutique"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button2"
-        android:layout_alignEnd="@+id/button2"
+        android:id="@+id/btn_shop"
+        android:layout_below="@+id/btn_forest"
+        android:layout_alignEnd="@+id/btn_forest"
         android:layout_marginTop="49dp"
         android:layout_alignParentStart="true" />
 
@@ -38,9 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Statistiques"
-        android:id="@+id/button4"
-        android:layout_below="@+id/button3"
-        android:layout_alignEnd="@+id/button3"
+        android:id="@+id/btn_stats"
+        android:layout_below="@+id/btn_shop"
+        android:layout_alignEnd="@+id/btn_shop"
         android:layout_marginTop="57dp"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

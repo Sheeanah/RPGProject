@@ -8,5 +8,6 @@
     <string name="title_activity_mine">MineActivity</string>
     <string name="title_activity_shop">ShopActivity</string>
     <string name="title_activity_arena">ArenaActivity</string>
+    <string name="title_activity_stats">StatsActivity</string>
 
 </resources>

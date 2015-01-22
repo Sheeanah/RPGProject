@@ -32,6 +32,10 @@
             android:name=".vue.ArenaActivity"
             android:label="@string/title_activity_arena" >
         </activity>
+        <activity
+            android:name=".vue.StatsActivity"
+            android:label="@string/title_activity_stats" >
+        </activity>
     </application>
 
 </manifest>

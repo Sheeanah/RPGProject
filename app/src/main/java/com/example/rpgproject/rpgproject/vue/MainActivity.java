@@ -1,9 +1,12 @@
 package com.example.rpgproject.rpgproject.vue;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.rpgproject.rpgproject.R;
 
@@ -13,8 +16,36 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("test");
         setContentView(R.layout.activity_main);
+        Button btn_mine=(Button)findViewById(R.id.btn_mine);
+        btn_mine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMine();
+            }
+        });
+        Button btn_forest=(Button)findViewById(R.id.btn_forest);
+        btn_forest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToForest();
+            }
+        });
+        Button btn_shop=(Button)findViewById(R.id.btn_shop);
+        btn_shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToShop();
+            }
+        });
+        Button btn_stats=(Button)findViewById(R.id.btn_stats);
+        btn_stats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToStats();
+            }
+        });
+
     }
 
 
@@ -38,5 +69,26 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToMine(){
+        Intent mineIntent=new Intent(this,MineActivity.class);
+        startActivity(mineIntent);
+    }
+    public void goToForest(){
+        Intent mineIntent=new Intent(this,ForestActivity.class);
+        startActivity(mineIntent);
+    }
+    public void goToShop(){
+        Intent mineIntent=new Intent(this,ShopActivity.class);
+        startActivity(mineIntent);
+    }
+    public void goToArena(){
+        Intent mineIntent=new Intent(this,ArenaActivity.class);
+        startActivity(mineIntent);
+    }
+    public void goToStats(){
+        Intent statsIntent=new Intent(this,StatsActivity.class);
+        startActivity(statsIntent);
     }
 }
