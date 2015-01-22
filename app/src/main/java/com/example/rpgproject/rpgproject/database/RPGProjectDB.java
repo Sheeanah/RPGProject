@@ -36,13 +36,44 @@ public class RPGProjectDB extends SQLiteOpenHelper{
 
     }
 
-    public static void addJoueur(Context context,Joueur joueur){
-        RPGProjectDB myDbHelper=new RPGProjectDB(context);
-        SQLiteDatabase myDb=myDbHelper.getWritableDatabase();
-        String query="INSERT INTO "+MYBASE_TABLEjoueur_NAME+"(gold,xp) VALUES("+joueur.getOr()+","+joueur.getXp()+")";
-        myDb.execSQL(query);
-        myDb.close();
-        myDbHelper.close();
+    public static boolean addJoueur(Context context,Joueur joueur)throws Exception {
+        boolean res=false;
+        try{
+            RPGProjectDB myDbHelper=new RPGProjectDB(context);
+            SQLiteDatabase myDb=myDbHelper.getWritableDatabase();
+            String query="INSERT INTO "+MYBASE_TABLEjoueur_NAME+"(gold,xp) VALUES("+joueur.getOr()+","+joueur.getXp()+")";
+            myDb.execSQL(query);
+            //TODO ajouter l'inventaire
+            myDb.close();
+            myDbHelper.close();
+            res=true;
+        }
+        catch(Exception e){
+            throw e;
+        }
+        finally {
+            return res;
+        }
+    }
+    public static boolean saveJoueur(Context context,Joueur joueur) throws Exception {
+        boolean res=false;
+        try{
+            RPGProjectDB myDbHelper=new RPGProjectDB(context);
+            SQLiteDatabase myDb=myDbHelper.getWritableDatabase();
+            String query="INSERT INTO "+MYBASE_TABLEjoueur_NAME+"(gold,xp) VALUES("+joueur.getOr()+","+joueur.getXp()+")";
+            myDb.execSQL(query);
+            //TODO ajouter l'inventaire
+            myDb.close();
+            myDbHelper.close();
+            res=true;
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally {
+            return res;
+        }
     }
     public static Joueur getJoueur(Context context,int idJoueur){
         int xp=0,or=0;

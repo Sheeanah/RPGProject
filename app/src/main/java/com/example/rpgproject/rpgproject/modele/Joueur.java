@@ -1,11 +1,14 @@
 package com.example.rpgproject.rpgproject.modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Dorian on 16/01/2015.
  */
 public class Joueur extends Personnage {
 
-
+    private List<Objet> inventaire;
     private int or;
     private int xp;
     private int idjoueur;
@@ -13,6 +16,12 @@ public class Joueur extends Personnage {
     public Joueur(int idjoueur,int xp, int or) {
         this.xp = xp;
         this.or = or;
+        this.inventaire=new ArrayList<Objet>();
+    }
+    public Joueur(int idjoueur,int xp,int or,List<Objet> inventaire){
+        this.xp=xp;
+        this.or=or;
+        this.inventaire=inventaire;
     }
 
     public int getIdjoueur() {
@@ -37,6 +46,14 @@ public class Joueur extends Personnage {
 
     public void setOr(int or) {
         this.or = or;
+    }
+
+    public List<Objet> getInventaire(){
+        return this.inventaire;
+    }
+
+    public void setInventaire(List<Objet> inventaire){
+        this.inventaire=inventaire;
     }
 
     @Override
