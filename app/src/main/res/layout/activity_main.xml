@@ -8,7 +8,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mine"
+        android:text="@string/str_btn_mine"
         android:id="@+id/btn_mine"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -17,7 +17,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forêt"
+        android:text="@string/str_btn_forest"
         android:id="@+id/btn_forest"
         android:layout_below="@+id/btn_mine"
         android:layout_alignParentEnd="true"
@@ -27,7 +27,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Boutique"
+        android:text="@string/str_btn_shop"
         android:id="@+id/btn_shop"
         android:layout_below="@+id/btn_forest"
         android:layout_alignEnd="@+id/btn_forest"
@@ -37,7 +37,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Statistiques"
+        android:text="@string/str_btn_stats"
         android:id="@+id/btn_stats"
         android:layout_below="@+id/btn_shop"
         android:layout_alignEnd="@+id/btn_shop"

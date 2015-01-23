@@ -52,8 +52,8 @@ public class Joueur extends Personnage {
         return this.inventaire;
     }
 
-    public void setInventaire(List<Objet> inventaire){
-        this.inventaire=inventaire;
+    public void equiper(Objet obj){
+        this.inventaire.add(obj);
     }
 
     @Override
@@ -63,17 +63,35 @@ public class Joueur extends Personnage {
 
     @Override
     public int getVie() {
-        return 1;
+        int res=0;
+        if(inventaire.size()>0){
+            for(Objet obj : inventaire){
+                res+=obj.getBonusVie();
+            }
+        }
+        return res+1;
     }
 
     @Override
     public int getAttaque() {
-        return 2;
+        int res=0;
+        if(inventaire.size()>0){
+            for(Objet obj : inventaire){
+                res+=obj.getBonusAtk();
+            }
+        }
+        return res+2;
     }
 
     @Override
     public int getDefense() {
-        return 1;
+        int res=0;
+        if(inventaire.size()>0){
+            for(Objet obj : inventaire){
+                res+=obj.getBonusDef();
+            }
+        }
+        return res+1;
     }
 
     @Override

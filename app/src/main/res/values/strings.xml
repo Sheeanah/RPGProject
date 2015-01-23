@@ -12,5 +12,11 @@
     <string name="str_stats_life">Vie :</string>
     <string name="str_stats_def">Defense :</string>
     <string name="str_stats_atk">Attaque :</string>
+    <string name="str_objet_epee_simple">Epee simple</string>
+    <string name="str_objet_bouclier_simple">Bouclier simple</string>
+    <string name="str_btn_mine">Mine</string>
+    <string name="str_btn_forest">Forêt</string>
+    <string name="str_btn_shop">Boutique</string>
+    <string name="str_btn_stats">Statistiques</string>
 
 </resources>

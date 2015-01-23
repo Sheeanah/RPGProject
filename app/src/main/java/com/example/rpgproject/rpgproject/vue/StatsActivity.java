@@ -7,8 +7,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.rpgproject.rpgproject.R;
+import com.example.rpgproject.rpgproject.controleur.FabriqueObjet;
 import com.example.rpgproject.rpgproject.database.RPGProjectDB;
 import com.example.rpgproject.rpgproject.modele.Joueur;
+import com.example.rpgproject.rpgproject.modele.Objet;
 
 public class StatsActivity extends ActionBarActivity {
 
@@ -18,6 +20,17 @@ public class StatsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_stats);
         Joueur j= RPGProjectDB.getJoueur(getApplicationContext(),1);
         if(j!=null){
+            FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
+            Objet obj=fabrique.getObjet(0, getApplicationContext());
+            if(obj!=null){
+                j.equiper(obj);
+            }
+            obj=fabrique.getObjet(1,getApplicationContext());
+            if(obj!=null){
+                j.equiper(obj);
+            }
+
+
             TextView txt_stats_life=(TextView)findViewById(R.id.lbl_stats_life);
             txt_stats_life.setText(txt_stats_life.getText().toString()+" "+j.getVie());
             TextView txt_stats_atk=(TextView)findViewById(R.id.lbl_stats_atk);
