@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.rpgproject.rpgproject.R;
 import com.example.rpgproject.rpgproject.controleur.FabriqueObjet;
+import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
 import com.example.rpgproject.rpgproject.database.RPGProjectDB;
 import com.example.rpgproject.rpgproject.modele.Joueur;
 import com.example.rpgproject.rpgproject.modele.Objet;
@@ -18,8 +19,13 @@ public class StatsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
-        Joueur j= RPGProjectDB.getJoueur(getApplicationContext(),1);
+
+        GestionnaireJoueur gestionnaire=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+
+        Joueur j= gestionnaire.getJoueur(1);
         if(j!=null){
+            gestionnaire.addJoueur(2,0,0,"Michel");
+
             FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
             Objet obj=fabrique.getObjet(0, getApplicationContext());
             if(obj!=null){
@@ -29,14 +35,24 @@ public class StatsActivity extends ActionBarActivity {
             if(obj!=null){
                 j.equiper(obj);
             }
+            j.setXp(200);
+            gestionnaire.saveJoueur(j.getIdjoueur());
 
 
             TextView txt_stats_life=(TextView)findViewById(R.id.lbl_stats_life);
             txt_stats_life.setText(txt_stats_life.getText().toString()+" "+j.getVie());
+
             TextView txt_stats_atk=(TextView)findViewById(R.id.lbl_stats_atk);
             txt_stats_atk.setText(txt_stats_atk.getText().toString()+" "+j.getAttaque());
+
             TextView txt_stats_def=(TextView)findViewById(R.id.lbl_stats_def);
             txt_stats_def.setText(txt_stats_def.getText().toString()+" "+j.getDefense());
+
+            TextView txt_stats_gold=(TextView)findViewById(R.id.lbl_stats_gold);
+            txt_stats_gold.setText(txt_stats_gold.getText().toString()+" "+j.getOr());
+
+            TextView txt_stats_xp=(TextView)findViewById(R.id.lbl_stats_xp);
+            txt_stats_xp.setText(txt_stats_xp.getText().toString()+" "+j.getXp());
         }
     }
 

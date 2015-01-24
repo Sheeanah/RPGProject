@@ -17,4 +17,6 @@ public abstract class Personnage {
 
     public abstract float getChance();
 
+    public abstract String getNom();
+
 }

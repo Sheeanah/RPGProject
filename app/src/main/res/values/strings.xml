@@ -18,5 +18,7 @@
     <string name="str_btn_forest">Forêt</string>
     <string name="str_btn_shop">Boutique</string>
     <string name="str_btn_stats">Statistiques</string>
+    <string name="str_stats_gold">Or :</string>
+    <string name="lbl_stats_xp">XP :</string>
 
 </resources>

@@ -39,6 +39,10 @@ public class FabriqueObjet {
         return res;
     }
 
+    public int getIdObjet(String objClass){
+        return lstObjets.indexOf(objClass);
+    }
+
     public static FabriqueObjet getUniqueInstance()
     {
         if(uniqueInstance==null){

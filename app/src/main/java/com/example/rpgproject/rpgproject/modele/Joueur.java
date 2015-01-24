@@ -12,16 +12,14 @@ public class Joueur extends Personnage {
     private int or;
     private int xp;
     private int idjoueur;
+    private String nom;
 
-    public Joueur(int idjoueur,int xp, int or) {
+    public Joueur(int idjoueur,int xp, int or,String nom) {
+        this.idjoueur=idjoueur;
         this.xp = xp;
         this.or = or;
+        this.nom=nom;
         this.inventaire=new ArrayList<Objet>();
-    }
-    public Joueur(int idjoueur,int xp,int or,List<Objet> inventaire){
-        this.xp=xp;
-        this.or=or;
-        this.inventaire=inventaire;
     }
 
     public int getIdjoueur() {
@@ -97,5 +95,16 @@ public class Joueur extends Personnage {
     @Override
     public float getChance() {
         return 0;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ID : "+idjoueur+" Nom : "+nom+" Or : "+or+" XP : "+xp;
+    }
+
+    @Override
+    public String getNom(){
+        return "'"+this.nom+"'";
     }
 }

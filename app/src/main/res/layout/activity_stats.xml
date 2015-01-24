@@ -31,5 +31,19 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/str_stats_def"
             android:id="@+id/lbl_stats_def" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/str_stats_gold"
+            android:id="@+id/lbl_stats_gold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/lbl_stats_xp"
+            android:id="@+id/lbl_stats_xp" />
     </LinearLayout>
 </RelativeLayout>

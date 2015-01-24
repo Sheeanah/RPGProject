@@ -1,6 +1,7 @@
 package com.example.rpgproject.rpgproject.vue;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Button btn_mine=(Button)findViewById(R.id.btn_mine);
         btn_mine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,6 +26,7 @@ public class MainActivity extends ActionBarActivity {
                 goToMine();
             }
         });
+
         Button btn_forest=(Button)findViewById(R.id.btn_forest);
         btn_forest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
                 goToForest();
             }
         });
+
         Button btn_shop=(Button)findViewById(R.id.btn_shop);
         btn_shop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +42,7 @@ public class MainActivity extends ActionBarActivity {
                 goToShop();
             }
         });
+
         Button btn_stats=(Button)findViewById(R.id.btn_stats);
         btn_stats.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +50,9 @@ public class MainActivity extends ActionBarActivity {
                 goToStats();
             }
         });
+
+        SharedPreferences sharedPreferences=getSharedPreferences("position_x",0);
+
 
     }
 
