@@ -1,9 +1,12 @@
 package com.example.rpgproject.rpgproject.vue;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.rpgproject.rpgproject.R;
@@ -20,6 +23,14 @@ public class StatsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
+        Button btn_map=(Button)findViewById(R.id.btn_map);
+        btn_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMap();
+            }
+        });
+
         GestionnaireJoueur gestionnaire=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
 
         Joueur j= gestionnaire.getJoueur(1);
@@ -35,9 +46,14 @@ public class StatsActivity extends ActionBarActivity {
             if(obj!=null){
                 j.equiper(obj);
             }
-            j.setXp(200);
+            j.setXp(1200);
             gestionnaire.saveJoueur(j.getIdjoueur());
 
+            TextView txt_stats_lvl=(TextView)findViewById(R.id.lbl_stats_lvl);
+            txt_stats_lvl.setText(txt_stats_lvl.getText().toString()+" "+j.getNiveau());
+
+            TextView txt_stats_xp=(TextView)findViewById(R.id.lbl_stats_xp);
+            txt_stats_xp.setText(txt_stats_xp.getText().toString()+" "+j.getXp());
 
             TextView txt_stats_life=(TextView)findViewById(R.id.lbl_stats_life);
             txt_stats_life.setText(txt_stats_life.getText().toString()+" "+j.getVie());
@@ -48,11 +64,11 @@ public class StatsActivity extends ActionBarActivity {
             TextView txt_stats_def=(TextView)findViewById(R.id.lbl_stats_def);
             txt_stats_def.setText(txt_stats_def.getText().toString()+" "+j.getDefense());
 
+            TextView txt_stats_luck=(TextView)findViewById(R.id.lbl_stats_luck);
+            txt_stats_luck.setText(txt_stats_luck.getText().toString()+" "+j.getChance());
+
             TextView txt_stats_gold=(TextView)findViewById(R.id.lbl_stats_gold);
             txt_stats_gold.setText(txt_stats_gold.getText().toString()+" "+j.getOr());
-
-            TextView txt_stats_xp=(TextView)findViewById(R.id.lbl_stats_xp);
-            txt_stats_xp.setText(txt_stats_xp.getText().toString()+" "+j.getXp());
         }
     }
 
@@ -77,5 +93,10 @@ public class StatsActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToMap(){
+        Intent mapIntent=new Intent(this,MainActivity.class);
+        startActivity(mapIntent);
     }
 }

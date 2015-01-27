@@ -7,7 +7,7 @@ import java.util.List;
  */
 public abstract class Personnage {
 
-    public abstract int getLevel();
+    public abstract int getNiveau();
 
     public abstract int getVie();
 

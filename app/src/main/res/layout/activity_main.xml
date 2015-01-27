@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:text="@string/str_btn_mine"
         android:id="@+id/btn_mine"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="48dp"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:id="@+id/btn_forest"
         android:layout_below="@+id/btn_mine"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="57dp"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -30,8 +30,8 @@
         android:text="@string/str_btn_shop"
         android:id="@+id/btn_shop"
         android:layout_below="@+id/btn_forest"
-        android:layout_alignEnd="@+id/btn_forest"
-        android:layout_marginTop="49dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="74dp"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -41,6 +41,7 @@
         android:id="@+id/btn_stats"
         android:layout_below="@+id/btn_shop"
         android:layout_alignEnd="@+id/btn_shop"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="69dp"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>

@@ -54,9 +54,8 @@ public class Joueur extends Personnage {
         this.inventaire.add(obj);
     }
 
-    @Override
-    public int getLevel() {
-        return 0;
+    public int getNiveau() {
+        return (int)xp/1000;
     }
 
     @Override
