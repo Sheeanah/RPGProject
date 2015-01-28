@@ -21,6 +21,10 @@ public class FabriqueObjet {
         lstObjets=new ArrayList<String>();
         lstObjets.add("com.example.rpgproject.rpgproject.modele.Epee");
         lstObjets.add("com.example.rpgproject.rpgproject.modele.BouclierSimple");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.ArmureSimple");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.CasqueSimple");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.BijouVie");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.BijouChance");
     }
 
     public Objet getObjet(int objId,Context context) {
@@ -34,6 +38,17 @@ public class FabriqueObjet {
             catch (Exception e){
                 e.printStackTrace();
                 Log.e("FabriqueObjet",e.getMessage());
+            }
+        }
+        return res;
+    }
+
+    public Objet getObjet(String nomObj,Context context){
+        Objet res=null;
+        for(String str : lstObjets){
+            String[] strSplit=str.split(".");
+            if(strSplit[strSplit.length-1].equals(nomObj)){
+                res=getObjet(lstObjets.indexOf(str),context);
             }
         }
         return res;

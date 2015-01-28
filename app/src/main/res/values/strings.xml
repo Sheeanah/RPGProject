@@ -15,6 +15,10 @@
     <string name="str_stats_luck">Chance :</string>
     <string name="str_objet_epee_simple">Epee simple</string>
     <string name="str_objet_bouclier_simple">Bouclier simple</string>
+    <string name="str_objet_armure_simple">Armure simple</string>
+    <string name="str_objet_casque_simple">Casque simple</string>
+    <string name="str_objet_bijou_vie">Bijou de vie</string>
+    <string name="str_objet_bijou_chance">Bijou de chance</string>
     <string name="str_btn_mine">Mine</string>
     <string name="str_btn_forest">Forêt</string>
     <string name="str_btn_shop">Boutique</string>

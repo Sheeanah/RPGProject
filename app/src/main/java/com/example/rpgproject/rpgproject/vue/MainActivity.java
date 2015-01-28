@@ -1,7 +1,11 @@
 package com.example.rpgproject.rpgproject.vue;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,14 +14,22 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.rpgproject.rpgproject.R;
+import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
+import com.example.rpgproject.rpgproject.modele.Joueur;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private LocationManager locationManager;
+    private String provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        GestionnaireJoueur gestionnaire=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        Joueur mainPlayer=gestionnaire.getMainJoueur();
 
         Button btn_mine=(Button)findViewById(R.id.btn_mine);
         btn_mine.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +63,20 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        SharedPreferences sharedPreferences=getSharedPreferences("position_x",0);
+        locationManager= (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
+        int lastX=prefs.getInt("x",0);
+        int lastY=prefs.getInt("y",0);
+        SharedPreferences.Editor prefEdit=prefs.edit();
+        provider=locationManager.getBestProvider(new Criteria(),false);
+        Location loc=locationManager.getLastKnownLocation(provider);
+
+        if(loc!=null){
+            float results[]=new float[0];
+            Location.distanceBetween(lastX,lastY,loc.getLatitude(),loc.getLongitude(),results);
+
+        }
+
 
 
     }

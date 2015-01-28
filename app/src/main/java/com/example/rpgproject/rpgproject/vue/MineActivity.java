@@ -23,7 +23,7 @@ public class MineActivity extends ActionBarActivity {
         setContentView(R.layout.activity_mine);
 
         GestionnaireJoueur gestionnaire = GestionnaireJoueur.getUniqueInstance(getApplicationContext());
-        final Joueur j= gestionnaire.getJoueur(1);
+        final Joueur j= gestionnaire.getMainJoueur();
 
         Button btn_map=(Button)findViewById(R.id.btn_map);
         btn_map.setOnClickListener(new View.OnClickListener() {
@@ -71,9 +71,9 @@ public class MineActivity extends ActionBarActivity {
     }
 
     public void doExcavations(Joueur j){
-        boolean isFinded = getRandomBoolean();
+        boolean isFound = getRandomBoolean();
 
-        if(isFinded)
+        if(isFound)
         {
             int money = getMoney(j.getChance());
             String text = "Vous gagnez " + money + " points";

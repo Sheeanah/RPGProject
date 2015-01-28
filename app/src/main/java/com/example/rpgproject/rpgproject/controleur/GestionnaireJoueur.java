@@ -47,6 +47,9 @@ public class GestionnaireJoueur {
             RPGProjectDB.saveJoueur(GestionnaireJoueur.context,j);
         }
     }
+    public Joueur getMainJoueur(){
+        return getJoueur(1);
+    }
 
     public void refresh(Context context){
         GestionnaireJoueur.context=context;
