@@ -1,4 +1,4 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
 
@@ -25,5 +25,10 @@ public class ArmureSimple extends Armure {
     @Override
     public String getNom() {
         return context.getResources().getString(R.string.str_objet_armure_simple);
+    }
+
+    @Override
+    public int getPrixAchat(){
+        return super.getPrixAchat();
     }
 }

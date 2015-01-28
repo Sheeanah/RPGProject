@@ -1,4 +1,4 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
 
@@ -20,5 +20,10 @@ public class CasqueSimple extends Casque {
     @Override
     public String getNom() {
         return context.getResources().getString(R.string.str_objet_casque_simple);
+    }
+
+    @Override
+    public int getPrixAchat(){
+        return super.getPrixAchat();
     }
 }

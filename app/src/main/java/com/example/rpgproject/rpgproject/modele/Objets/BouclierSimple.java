@@ -1,4 +1,4 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
 
@@ -21,5 +21,10 @@ public class BouclierSimple extends Bouclier {
     @Override
     public String getNom() {
         return context.getResources().getString(R.string.str_objet_bouclier_simple);
+    }
+
+    @Override
+    public int getPrixAchat(){
+        return super.getPrixAchat();
     }
 }

@@ -1,5 +1,7 @@
 package com.example.rpgproject.rpgproject.modele;
 
+import com.example.rpgproject.rpgproject.modele.Objets.Objet;
+
 import java.util.ArrayList;
 import java.util.List;
 

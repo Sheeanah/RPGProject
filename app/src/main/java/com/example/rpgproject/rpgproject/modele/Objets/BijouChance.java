@@ -1,4 +1,4 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
 
@@ -20,5 +20,10 @@ public class BijouChance extends Bijou{
     @Override
     public String getNom() {
         return context.getResources().getString(R.string.str_objet_bijou_chance);
+    }
+
+    @Override
+    public int getPrixAchat(){
+        return super.getPrixAchat();
     }
 }

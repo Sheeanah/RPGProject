@@ -7,9 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.rpgproject.rpgproject.controleur.FabriqueObjet;
-import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
 import com.example.rpgproject.rpgproject.modele.Joueur;
-import com.example.rpgproject.rpgproject.modele.Objet;
+import com.example.rpgproject.rpgproject.modele.Objets.Objet;
 
 import java.util.ArrayList;
 import java.util.List;

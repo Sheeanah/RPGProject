@@ -1,4 +1,4 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
 
@@ -29,5 +29,10 @@ public abstract class Arme extends Objet{
     @Override
     public String getType(){
         return "Arme";
+    }
+
+    @Override
+    public int getPrixAchat(){
+        return super.getPrixAchat()*5;
     }
 }
