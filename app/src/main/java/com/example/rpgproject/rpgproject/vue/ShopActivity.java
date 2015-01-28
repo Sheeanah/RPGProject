@@ -4,8 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.rpgproject.rpgproject.R;
+import com.example.rpgproject.rpgproject.controleur.FabriqueObjet;
+import com.example.rpgproject.rpgproject.modele.Objet;
 
 
 public class ShopActivity extends ActionBarActivity {
@@ -14,6 +17,12 @@ public class ShopActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+
+        //FabriqueObjet fabrique = FabriqueObjet.getUniqueInstance();
+        //Objet objet = fabrique.getObjet(1,getApplicationContext());
+        //String atk = "" + objet.getBonusAtk();
+
+        //Toast.makeText(getApplicationContext(), atk, Toast.LENGTH_SHORT).show();
     }
 
 
