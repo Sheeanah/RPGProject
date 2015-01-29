@@ -30,8 +30,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acheter"
-                android:id="@+id/btn_armor_buy" />
+                android:text="armor_price"
+                android:id="@+id/btn_armor_price" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,8 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Armor_Price"
-                android:id="@+id/lbl_armor_price" />
+                android:text="Armor_stats"
+                android:id="@+id/lbl_armor_stats" />
 
         </LinearLayout>
 
@@ -58,8 +58,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acheter"
-                android:id="@+id/btn_luck_buy" />
+                android:text="luck_price"
+                android:id="@+id/btn_luck_price" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,8 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Chance_Price"
-                android:id="@+id/lbl_luck_price" />
+                android:text="Chance_stats"
+                android:id="@+id/lbl_luck_stats" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,8 +85,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acheter"
-                android:id="@+id/btn_life_buy" />
+                android:text="life_price"
+                android:id="@+id/btn_life_price" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,8 +99,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Life_Price"
-                android:id="@+id/lbl_life_price" />
+                android:text="Life_stats"
+                android:id="@+id/lbl_life_stats" />
         </LinearLayout>
 
         <LinearLayout
@@ -112,8 +112,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acheter"
-                android:id="@+id/btn_shield_buy" />
+                android:text="shield_price"
+                android:id="@+id/btn_shield_price" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -126,8 +126,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Shield_Price"
-                android:id="@+id/lbl_shield_price" />
+                android:text="Shield_stats"
+                android:id="@+id/lbl_shield_stats" />
         </LinearLayout>
 
         <LinearLayout
@@ -139,8 +139,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acheter"
-                android:id="@+id/btn_helmet_buy" />
+                android:text="helmet_price"
+                android:id="@+id/btn_helmet_price" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -153,8 +153,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Helmet_Price"
-                android:id="@+id/lbl_helmet_price" />
+                android:text="Helmet_stats"
+                android:id="@+id/lbl_helmet_stats" />
         </LinearLayout>
 
         <LinearLayout
@@ -166,8 +166,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acheter"
-                android:id="@+id/btn_sword_buy" />
+                android:text="sword_price"
+                android:id="@+id/btn_sword_price" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -180,8 +180,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Sword_Price"
-                android:id="@+id/lbl_sword_price" />
+                android:text="Sword_stats"
+                android:id="@+id/lbl_sword_stats" />
         </LinearLayout>
 
     </LinearLayout>
