@@ -47,7 +47,7 @@ public class FabriqueObjet {
     public Objet getObjet(String nomObj,Context context){
         Objet res=null;
         for(String str : lstObjets){
-            String[] strSplit=str.split(".");
+            String[] strSplit=str.split("\\.");
             if(strSplit[strSplit.length-1].equals(nomObj)){
                 res=getObjet(lstObjets.indexOf(str),context);
             }

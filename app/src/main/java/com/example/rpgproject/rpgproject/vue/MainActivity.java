@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.rpgproject.rpgproject.R;
+import com.example.rpgproject.rpgproject.controleur.FabriqueObjet;
 import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
 import com.example.rpgproject.rpgproject.modele.Joueur;
 
