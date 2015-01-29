@@ -8,11 +8,11 @@
     <string name="title_activity_shop">Boutique</string>
     <string name="title_activity_arena">Arène</string>
     <string name="title_activity_stats">Statistiques</string>
-    <string name="str_stats_lvl">Niveau :</string>
-    <string name="str_stats_life">Vie :</string>
-    <string name="str_stats_def">Defense :</string>
-    <string name="str_stats_atk">Attaque :</string>
-    <string name="str_stats_luck">Chance :</string>
+    <string name="str_stats_lvl">Niveau : </string>
+    <string name="str_stats_life">Vie : </string>
+    <string name="str_stats_def">Defense : </string>
+    <string name="str_stats_atk">Attaque : </string>
+    <string name="str_stats_luck">Chance : </string>
     <string name="str_objet_epee_simple">Epee simple</string>
     <string name="str_objet_bouclier_simple">Bouclier simple</string>
     <string name="str_objet_armure_simple">Armure simple</string>
@@ -25,9 +25,14 @@
     <string name="str_btn_forest">Forêt</string>
     <string name="str_btn_shop">Boutique</string>
     <string name="str_btn_stats">Statistiques</string>
-    <string name="str_stats_gold">Or :</string>
-    <string name="lbl_stats_xp">XP :</string>
+    <string name="str_stats_gold">Or : </string>
+    <string name="lbl_stats_xp">XP : </string>
     <string name="lbl_back_map">Retourner à la carte</string>
     <string name="str_stats_inventory">Inventaire</string>
+    <string name="int_init">0</string>
+    <string name="str_monster">Monstre</string>
+    <string name="str_hero">Hero</string>
+    <string name="str_atk">Attaquer</string>
+    <string name="str_def">Se défendre</string>
 
 </resources>

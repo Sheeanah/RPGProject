@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class Monstre extends Personnage {
 
     Context context;
-    Monstre(Context context){
+    public Monstre(Context context){
         super();
         this.context=context;
     }
