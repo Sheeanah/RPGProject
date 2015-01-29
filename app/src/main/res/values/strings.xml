@@ -34,5 +34,6 @@
     <string name="str_hero">Hero</string>
     <string name="str_atk">Attaquer</string>
     <string name="str_def">Se défendre</string>
+    <string name="str_excavation">Fouiller</string>
 
 </resources>

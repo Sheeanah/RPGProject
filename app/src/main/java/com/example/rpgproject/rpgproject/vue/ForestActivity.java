@@ -1,6 +1,7 @@
 package com.example.rpgproject.rpgproject.vue;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -53,7 +54,7 @@ public class ForestActivity extends ActionBarActivity {
         str_stats_luck_hero.setText(str_stats_luck_hero.getText().toString()+" "+mainJoueur.getChance());
 
         fabriqueMonstre=FabriqueMonstre.getUniqueInstance();
-        Monstre monster = random_monster();
+        final Monstre monster = random_monster();
 
         TextView str_stats_lvl_monster=(TextView)findViewById(R.id.str_stats_lvl_monster);
         str_stats_lvl_monster.setText(str_stats_lvl_monster.getText().toString() + " " + monster.getNiveau());
@@ -77,7 +78,7 @@ public class ForestActivity extends ActionBarActivity {
         btn_atk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                atk();
+                atk(mainJoueur.getVie(), mainJoueur.getAttaque(), mainJoueur.getDefense(), mainJoueur.getChance(), monster.getVie(), monster.getAttaque(), monster.getDefense(), monster.getChance(), monster.getNiveau());
             }
         });
 
@@ -85,7 +86,7 @@ public class ForestActivity extends ActionBarActivity {
         btn_def.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                def();
+                def(mainJoueur.getVie(), mainJoueur.getAttaque(), mainJoueur.getDefense(), mainJoueur.getChance(), monster.getVie(), monster.getAttaque(), monster.getDefense(), monster.getChance(), monster.getNiveau());
             }
         });
     }
@@ -157,13 +158,77 @@ public class ForestActivity extends ActionBarActivity {
         return life - atk + def;
     }
 
-    public void atk()
+    public void atk(int life_hero, int atk_hero, int def_hero, int luck_hero, int life_monster, int atk_monster, int def_monster, int luck_monster, int level_monster)
     {
-
+        Boolean hero_missed = miss(luck_hero);
+        Boolean attack_ennemy = getRandomBoolean();
+        if(attack_ennemy)
+        {
+            Boolean ennemy_missed = miss(luck_monster);
+            if(ennemy_missed)
+            {
+                if(!hero_missed)
+                {
+                    life_monster = damages(life_monster, atk_hero, 0);
+                    end_turn(life_hero, life_monster, level_monster);
+                }
+            }
+            else
+            {
+                if(hero_missed)
+                {
+                    life_hero = damages(life_hero, atk_monster, 0);
+                    end_turn(life_hero, life_monster, level_monster);
+                }
+                else
+                {
+                    life_hero = damages(life_hero, atk_monster, 0);
+                    life_monster = damages(life_monster, atk_hero, 0);
+                    end_turn(life_hero, life_monster, level_monster);
+                }
+            }
+        }
+        else
+        {
+            life_monster = damages(life_monster, atk_hero, def_monster);
+            end_turn(life_hero, life_monster, level_monster);
+        }
     }
 
-    public void def()
+    public void def(int life_hero, int atk_hero, int def_hero, int luck_hero, int life_monster, int atk_monster, int def_monster, int luck_monster, int level_monster)
     {
+        Boolean attack_ennemy = getRandomBoolean();
+        if(attack_ennemy)
+        {
+            Boolean ennemy_missed = miss(luck_monster);
+            if(!ennemy_missed)
+            {
+                life_hero = damages(life_hero, atk_monster, def_hero);
+                end_turn(life_hero, life_monster, level_monster);
+            }
+        }
+    }
 
+    public void end_turn(int life_hero, int life_monster, int level_monster)
+    {
+        TextView life_to_update_hero=(TextView)findViewById(R.id.life_to_update_hero);
+        life_to_update_hero.setText(life_hero);
+
+        TextView life_to_update_monster=(TextView)findViewById(R.id.life_to_update_monster);
+        life_to_update_monster.setText(life_monster);
+        if(life_monster == 0)
+        {
+            //int xp_win = level_monster * 100;
+            //Toast.makeText(getApplicationContext(), "Bien joué ! Vous gagnez " + xp_win + "XP, Toast.LENGTH_SHORT).show();
+            //mainJoueur.addXp(xp_win);
+            //Intent mapIntent=new Intent(this,MainActivity.class);
+            //startActivity(mapIntent);
+        }
+        if(life_hero == 0)
+        {
+            //Toast.makeText(getApplicationContext(), "Vous avez perdu le combat. ", Toast.LENGTH_SHORT).show();
+            //Intent mapIntent=new Intent(this,MainActivity.class);
+            //startActivity(mapIntent);
+        }
     }
 }

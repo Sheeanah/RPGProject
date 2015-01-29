@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.rpgproject.rpgproject.R;
@@ -35,32 +36,32 @@ public class MainActivity extends ActionBarActivity {
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
         mainJoueur=gestionnaireJoueur.getMainJoueur();
 
-        Button btn_mine=(Button)findViewById(R.id.btn_mine);
-        btn_mine.setOnClickListener(new View.OnClickListener() {
+        ImageView img_mine=(ImageView)findViewById(R.id.img_mine);
+        img_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToMine();
             }
         });
 
-        Button btn_forest=(Button)findViewById(R.id.btn_forest);
-        btn_forest.setOnClickListener(new View.OnClickListener() {
+        ImageView img_forest=(ImageView)findViewById(R.id.img_forest);
+        img_forest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToForest();
             }
         });
 
-        Button btn_shop=(Button)findViewById(R.id.btn_shop);
-        btn_shop.setOnClickListener(new View.OnClickListener() {
+        ImageView img_shop=(ImageView)findViewById(R.id.img_shop);
+        img_shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToShop();
             }
         });
 
-        Button btn_stats=(Button)findViewById(R.id.btn_stats);
-        btn_stats.setOnClickListener(new View.OnClickListener() {
+        ImageView img_stats=(ImageView)findViewById(R.id.img_stats);
+        img_stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToStats();

@@ -9,10 +9,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fouiller"
+        android:text="@string/str_excavation"
         android:id="@+id/btn_excavation"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/btn_map"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="111dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -22,5 +23,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_boutique"
+        android:src="@drawable/mine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btn_excavation" />
 
 </RelativeLayout>
