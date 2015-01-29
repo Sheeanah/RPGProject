@@ -8,7 +8,7 @@ import com.example.rpgproject.rpgproject.R;
  * Created by Dorian on 28/01/2015.
  */
 public class ArmureSimple extends Armure {
-    ArmureSimple(Context context) {
+    public ArmureSimple(Context context) {
         super(context);
     }
 

@@ -19,6 +19,9 @@ import com.example.rpgproject.rpgproject.modele.Objets.Objet;
 
 public class StatsActivity extends ActionBarActivity {
 
+    private Joueur mainJoueur;
+    private GestionnaireJoueur gestionnaireJoueur;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,34 +35,34 @@ public class StatsActivity extends ActionBarActivity {
             }
         });
 
-        GestionnaireJoueur gestionnaire=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
 
-        Joueur j= gestionnaire.getMainJoueur();
-        if(j!=null){
+        mainJoueur= gestionnaireJoueur.getMainJoueur();
+        if(mainJoueur!=null){
 
             TextView txt_stats_lvl=(TextView)findViewById(R.id.lbl_stats_lvl);
-            txt_stats_lvl.setText(txt_stats_lvl.getText().toString()+" "+j.getNiveau());
+            txt_stats_lvl.setText(txt_stats_lvl.getText().toString() + " " + mainJoueur.getNiveau());
 
             TextView txt_stats_xp=(TextView)findViewById(R.id.lbl_stats_xp);
-            txt_stats_xp.setText(txt_stats_xp.getText().toString()+" "+j.getXp());
+            txt_stats_xp.setText(txt_stats_xp.getText().toString()+" "+mainJoueur.getXp());
 
             TextView txt_stats_life=(TextView)findViewById(R.id.lbl_stats_life);
-            txt_stats_life.setText(txt_stats_life.getText().toString()+" "+j.getVie());
+            txt_stats_life.setText(txt_stats_life.getText().toString()+" "+mainJoueur.getVie());
 
             TextView txt_stats_atk=(TextView)findViewById(R.id.lbl_stats_atk);
-            txt_stats_atk.setText(txt_stats_atk.getText().toString()+" "+j.getAttaque());
+            txt_stats_atk.setText(txt_stats_atk.getText().toString() + " " + mainJoueur.getAttaque());
 
             TextView txt_stats_def=(TextView)findViewById(R.id.lbl_stats_def);
-            txt_stats_def.setText(txt_stats_def.getText().toString()+" "+j.getDefense());
+            txt_stats_def.setText(txt_stats_def.getText().toString()+" "+mainJoueur.getDefense());
 
             TextView txt_stats_luck=(TextView)findViewById(R.id.lbl_stats_luck);
-            txt_stats_luck.setText(txt_stats_luck.getText().toString()+" "+j.getChance());
+            txt_stats_luck.setText(txt_stats_luck.getText().toString()+" "+mainJoueur.getChance());
 
             TextView txt_stats_gold=(TextView)findViewById(R.id.lbl_stats_gold);
-            txt_stats_gold.setText(txt_stats_gold.getText().toString()+" "+j.getOr());
+            txt_stats_gold.setText(txt_stats_gold.getText().toString() + " " + mainJoueur.getOr());
 
             LinearLayout layout=(LinearLayout)findViewById(R.id.container_inventory_items);
-            for(Objet obj : j.getInventaire()){
+            for(Objet obj : mainJoueur.getInventaire()){
                 TextView tv=new TextView(getApplicationContext());
                 tv.setText(obj.getNom());
                 layout.addView(tv);
@@ -93,5 +96,11 @@ public class StatsActivity extends ActionBarActivity {
     public void goToMap(){
         Intent mapIntent=new Intent(this,MainActivity.class);
         startActivity(mapIntent);
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        gestionnaireJoueur.saveJoueur(mainJoueur.getId());
     }
 }

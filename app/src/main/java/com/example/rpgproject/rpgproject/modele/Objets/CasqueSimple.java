@@ -8,7 +8,7 @@ import com.example.rpgproject.rpgproject.R;
  * Created by Dorian on 28/01/2015.
  */
 public class CasqueSimple extends Casque {
-    CasqueSimple(Context context) {
+    public CasqueSimple(Context context) {
         super(context);
     }
 

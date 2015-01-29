@@ -17,13 +17,16 @@ import com.example.rpgproject.rpgproject.modele.Joueur;
 
 public class MineActivity extends ActionBarActivity {
 
+    private Joueur mainJoueur;
+    private GestionnaireJoueur gestionnaireJoueur;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine);
 
-        GestionnaireJoueur gestionnaire = GestionnaireJoueur.getUniqueInstance(getApplicationContext());
-        final Joueur j= gestionnaire.getMainJoueur();
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        mainJoueur=gestionnaireJoueur.getMainJoueur();
 
         Button btn_map=(Button)findViewById(R.id.btn_map);
         btn_map.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +40,7 @@ public class MineActivity extends ActionBarActivity {
         btn_excavation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doExcavations(j);
+                doExcavations(mainJoueur);
             }
         });
     }
@@ -90,6 +93,12 @@ public class MineActivity extends ActionBarActivity {
     public int getMoney(int luck)
     {
         return luck * 100;
+    }
+
+    public void onPause(){
+        super.onPause();
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        gestionnaireJoueur.saveJoueur(mainJoueur.getId());
     }
 
 }

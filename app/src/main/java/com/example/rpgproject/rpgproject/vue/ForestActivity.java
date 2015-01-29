@@ -6,14 +6,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.rpgproject.rpgproject.R;
+import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
+import com.example.rpgproject.rpgproject.modele.Joueur;
 
 
 public class ForestActivity extends ActionBarActivity {
+
+    private Joueur mainJoueur;
+    private GestionnaireJoueur gestionnaireJoueur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forest);
+
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        mainJoueur=gestionnaireJoueur.getMainJoueur();
     }
 
 
@@ -37,5 +45,10 @@ public class ForestActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void onPause(){
+        super.onPause();
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        gestionnaireJoueur.saveJoueur(mainJoueur.getId());
     }
 }

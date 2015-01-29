@@ -8,7 +8,7 @@ import com.example.rpgproject.rpgproject.R;
  * Created by Dorian on 28/01/2015.
  */
 public class BijouVie extends Bijou {
-    BijouVie(Context context) {
+    public BijouVie(Context context) {
         super(context);
     }
 

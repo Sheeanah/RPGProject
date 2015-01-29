@@ -24,14 +24,16 @@ public class MainActivity extends ActionBarActivity {
 
     private LocationManager locationManager;
     private String provider;
+    private Joueur mainJoueur;
+    private GestionnaireJoueur gestionnaireJoueur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GestionnaireJoueur gestionnaire=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
-        Joueur mainPlayer=gestionnaire.getMainJoueur();
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        mainJoueur=gestionnaireJoueur.getMainJoueur();
 
         Button btn_mine=(Button)findViewById(R.id.btn_mine);
         btn_mine.setOnClickListener(new View.OnClickListener() {
@@ -80,13 +82,16 @@ public class MainActivity extends ActionBarActivity {
             if(loc!=null){
                 float results[]=new float[0];
                 Location.distanceBetween(lastX,lastY,loc.getLatitude(),loc.getLongitude(),results);
-                mainPlayer.addGold((int) results[0]);
-                gestionnaire.saveJoueur(mainPlayer.getId());
+                mainJoueur.addGold((int) results[0]);
+                gestionnaireJoueur.saveJoueur(mainJoueur.getId());
                 Toast.makeText(getApplicationContext(), Float.toString(results[0]), Toast.LENGTH_SHORT).show();
 
             }
             Toast.makeText(getApplicationContext(),"GPS activé, mais pas de coordonnées disponibles.", Toast.LENGTH_SHORT).show();
         }
+
+        FabriqueObjet fabriqueObjet=FabriqueObjet.getUniqueInstance();
+        Toast.makeText(getApplicationContext(),fabriqueObjet.getObjet("BouclierSimple",getApplicationContext()).getNom(),Toast.LENGTH_LONG).show();
     }
 
 
@@ -131,5 +136,10 @@ public class MainActivity extends ActionBarActivity {
     public void goToStats(){
         Intent statsIntent=new Intent(this,StatsActivity.class);
         startActivity(statsIntent);
+    }
+    public void onPause(){
+        super.onPause();
+        gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
+        gestionnaireJoueur.saveJoueur(mainJoueur.getId());
     }
 }
