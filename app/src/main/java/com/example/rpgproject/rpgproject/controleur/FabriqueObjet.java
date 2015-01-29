@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.rpgproject.rpgproject.modele.Objets.Objet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -64,5 +65,21 @@ public class FabriqueObjet {
             uniqueInstance=new FabriqueObjet();
         }
         return uniqueInstance;
+    }
+
+    public HashMap<String,List<Objet>> getAllObjets(Context context){
+        HashMap<String,List<Objet>> res=new HashMap<>();
+        for(String strObj : lstObjets){
+            Objet obj=getObjet(strObj,context);
+            List<Objet> reslist=res.get(obj.getType());
+            res.remove(obj.getType());
+            if(reslist==null){
+                reslist=new ArrayList<Objet>();
+            }
+            reslist.add(obj);
+            res.put(obj.getType(),reslist);
+        }
+        return res;
+
     }
 }

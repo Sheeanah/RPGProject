@@ -32,10 +32,8 @@ public class StatsActivity extends ActionBarActivity {
 
         GestionnaireJoueur gestionnaire=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
 
-        Joueur j= gestionnaire.getJoueur(1);
+        Joueur j= gestionnaire.getMainJoueur();
         if(j!=null){
-            gestionnaire.addJoueur(2,0,0,"Michel");
-
             FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
             Objet obj=fabrique.getObjet(0, getApplicationContext());
             if(obj!=null){
@@ -45,7 +43,6 @@ public class StatsActivity extends ActionBarActivity {
             if(obj!=null){
                 j.equiper(obj);
             }
-            j.setXp(1200);
             gestionnaire.saveJoueur(j.getId());
 
             TextView txt_stats_lvl=(TextView)findViewById(R.id.lbl_stats_lvl);

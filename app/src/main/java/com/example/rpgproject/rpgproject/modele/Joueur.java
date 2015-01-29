@@ -64,8 +64,24 @@ public class Joueur extends Personnage {
         this.or+=or;
     }
 
+    private boolean removeGold(int or){
+        boolean res=false;
+        if(this.or-or>0){
+            this.or-=or;
+            res=true;
+        }
+        return res;
+    }
+
     public void addXp(int xp){
         this.xp+=xp;
+    }
+
+    public void acheter(Objet obj){
+        if(removeGold(obj.getPrixAchat())){
+            equiper(obj);
+        }
+
     }
 
     @Override

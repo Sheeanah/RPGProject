@@ -78,7 +78,7 @@ public class MineActivity extends ActionBarActivity {
             int money = getMoney(j.getChance());
             String text = "Vous gagnez " + money + " points";
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
-            j.setOr(money);
+            j.addGold(money);
         }
     }
 
