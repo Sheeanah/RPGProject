@@ -44,7 +44,7 @@ public class ShopActivity extends ActionBarActivity {
          lbl_sword_stats.setText(epee.getBonusAtk() + "");
 
          TextView lbl_money=(TextView)findViewById(R.id.lbl_money);
-         lbl_money.setText(j.getOr());
+         lbl_money.setText(j.getOr() + "");
 
          Button btn_map=(Button)findViewById(R.id.btn_map);
          btn_map.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +88,7 @@ public class ShopActivity extends ActionBarActivity {
         {
             Toast.makeText(getApplicationContext(), "Achat effectué", Toast.LENGTH_SHORT).show();
             TextView lbl_money=(TextView)findViewById(R.id.lbl_money);
-            lbl_money.setText(j.getOr());
+            lbl_money.setText(j.getOr() + "");
         }
         else
         {
