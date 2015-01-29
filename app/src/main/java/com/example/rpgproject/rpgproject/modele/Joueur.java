@@ -1,5 +1,8 @@
 package com.example.rpgproject.rpgproject.modele;
 
+import android.content.Context;
+
+import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
 import com.example.rpgproject.rpgproject.modele.Objets.Objet;
 
 import java.util.ArrayList;
@@ -15,13 +18,15 @@ public class Joueur extends Personnage {
     private int xp;
     private int id;
     private String nom;
+    private GestionnaireJoueur gestionnaire;
 
-    public Joueur(int id,int xp, int or,String nom) {
+    public Joueur(int id,int xp, int or,String nom,Context context) {
         this.id = id;
         this.xp = xp;
         this.or = or;
         this.nom=nom;
         this.inventaire=new ArrayList<Objet>();
+        this.gestionnaire=GestionnaireJoueur.getUniqueInstance(context);
     }
 
     public int getId() {
@@ -30,6 +35,7 @@ public class Joueur extends Personnage {
 
     private void setId(int id) {
         this.id = id;
+        gestionnaire.saveJoueur(this.id);
     }
 
     public int getXp() {
@@ -38,6 +44,7 @@ public class Joueur extends Personnage {
 
     private void setXp(int xp) {
         this.xp = xp;
+        gestionnaire.saveJoueur(this.id);
     }
 
     public int getOr() {
@@ -46,6 +53,7 @@ public class Joueur extends Personnage {
 
     private void setOr(int or) {
         this.or = or;
+        gestionnaire.saveJoueur(this.id);
     }
 
     public List<Objet> getInventaire(){
@@ -62,6 +70,7 @@ public class Joueur extends Personnage {
 
     public void addGold(int or){
         this.or+=or;
+        gestionnaire.saveJoueur(this.id);
     }
 
     private boolean removeGold(int or){
@@ -77,11 +86,14 @@ public class Joueur extends Personnage {
         this.xp+=xp;
     }
 
-    public void acheter(Objet obj){
+    public boolean acheter(Objet obj){
+        boolean res=false;
         if(removeGold(obj.getPrixAchat())){
             equiper(obj);
+            gestionnaire.saveJoueur(this.id);
+            res=true;
         }
-
+        return res;
     }
 
     @Override
@@ -119,7 +131,7 @@ public class Joueur extends Personnage {
 
     @Override
     public int getChance() {
-        return 0;
+        return 50;
     }
 
     @Override

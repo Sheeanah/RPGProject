@@ -60,7 +60,7 @@ public class RPGProjectDB extends SQLiteOpenHelper{
             Cursor resultJoueur=myDb.rawQuery(queryJoueurs,null);
             if(resultJoueur!=null) {
                 while (resultJoueur.moveToNext()) {
-                    res.add(new Joueur(resultJoueur.getInt(0), resultJoueur.getInt(1), resultJoueur.getInt(2),resultJoueur.getString(3)));
+                    res.add(new Joueur(resultJoueur.getInt(0), resultJoueur.getInt(1), resultJoueur.getInt(2),resultJoueur.getString(3),context));
                     Log.i("getListJoueur",res.get(res.size()-1).toString());
                 }
                 FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
@@ -133,7 +133,7 @@ public class RPGProjectDB extends SQLiteOpenHelper{
             Cursor resultJoueur=myDb.rawQuery(queryJoueur,null);
             if(resultJoueur!=null) {
                 while (resultJoueur.moveToNext()) {
-                    res=new Joueur(resultJoueur.getInt(0), resultJoueur.getInt(1), resultJoueur.getInt(2),resultJoueur.getString(3));
+                    res=new Joueur(resultJoueur.getInt(0), resultJoueur.getInt(1), resultJoueur.getInt(2),resultJoueur.getString(3),context);
                     Log.i("getJoueur",res.toString());
                 }
                 FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();

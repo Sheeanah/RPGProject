@@ -24,7 +24,7 @@ public class GestionnaireJoueur {
 
     public void addJoueur(int id, int or, int xp,String nom){
         if(getJoueur(id)==null){
-            Joueur j =new Joueur(id,xp,or,nom);
+            Joueur j =new Joueur(id,xp,or,nom,context);
             RPGProjectDB.addJoueur(GestionnaireJoueur.context,j);
             listeJoueurs.add(RPGProjectDB.getJoueur(GestionnaireJoueur.context,id));
         }
