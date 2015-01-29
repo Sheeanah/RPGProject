@@ -13,30 +13,30 @@ public class Joueur extends Personnage {
     private List<Objet> inventaire;
     private int or;
     private int xp;
-    private int idjoueur;
+    private int id;
     private String nom;
 
-    public Joueur(int idjoueur,int xp, int or,String nom) {
-        this.idjoueur=idjoueur;
+    public Joueur(int id,int xp, int or,String nom) {
+        this.id = id;
         this.xp = xp;
         this.or = or;
         this.nom=nom;
         this.inventaire=new ArrayList<Objet>();
     }
 
-    public int getIdjoueur() {
-        return idjoueur;
+    public int getId() {
+        return id;
     }
 
-    public void setIdjoueur(int idjoueur) {
-        this.idjoueur = idjoueur;
+    private void setId(int id) {
+        this.id = id;
     }
 
     public int getXp() {
         return xp;
     }
 
-    public void setXp(int xp) {
+    private void setXp(int xp) {
         this.xp = xp;
     }
 
@@ -44,7 +44,7 @@ public class Joueur extends Personnage {
         return or;
     }
 
-    public void setOr(int or) {
+    private void setOr(int or) {
         this.or = or;
     }
 
@@ -58,6 +58,14 @@ public class Joueur extends Personnage {
 
     public int getNiveau() {
         return (int)xp/1000;
+    }
+
+    public void addGold(int or){
+        this.or+=or;
+    }
+
+    public void addXp(int xp){
+        this.xp+=xp;
     }
 
     @Override
@@ -101,7 +109,7 @@ public class Joueur extends Personnage {
     @Override
     public String toString()
     {
-        return "ID : "+idjoueur+" Nom : "+nom+" Or : "+or+" XP : "+xp;
+        return "ID : "+ id +" Nom : "+nom+" Or : "+or+" XP : "+xp;
     }
 
     @Override

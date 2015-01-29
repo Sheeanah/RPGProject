@@ -65,7 +65,7 @@ public class RPGProjectDB extends SQLiteOpenHelper{
                 }
                 FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
                 for(Joueur j : res){
-                    String queryInventaire="SELECT idobjet FROM "+MYBASE_TABLEinvent_NAME+" WHERE idjoueur="+j.getIdjoueur();
+                    String queryInventaire="SELECT idobjet FROM "+MYBASE_TABLEinvent_NAME+" WHERE idjoueur="+j.getId();
                     Cursor resultInventaire=myDb.rawQuery(queryInventaire,null);
                     if(resultInventaire!=null){
                         while(resultInventaire.moveToNext()){
@@ -92,7 +92,7 @@ public class RPGProjectDB extends SQLiteOpenHelper{
             Log.i("addJoueur",joueur+" ajouté à la base");
             FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
             for(Objet obj : joueur.getInventaire()) {
-                String queryInventaire="INSERT INTO "+MYBASE_TABLEinvent_NAME+"(idjoueur,idobjet) VALUES("+joueur.getIdjoueur()+","+ fabrique.getIdObjet(obj.getClass().toString())+")";
+                String queryInventaire="INSERT INTO "+MYBASE_TABLEinvent_NAME+"(idjoueur,idobjet) VALUES("+joueur.getId()+","+ fabrique.getIdObjet(obj.getClass().toString())+")";
                 myDb.execSQL(queryInventaire);
                 Log.i("addJoueur","Objet "+obj.getNom()+" enregistré pour "+joueur);
             }
@@ -107,12 +107,12 @@ public class RPGProjectDB extends SQLiteOpenHelper{
         try{
             RPGProjectDB myDbHelper=new RPGProjectDB(context);
             SQLiteDatabase myDb=myDbHelper.getWritableDatabase();
-            String queryJoueur="UPDATE "+MYBASE_TABLEjoueur_NAME+" SET gold="+joueur.getOr()+",xp="+joueur.getXp()+" WHERE idjoueur="+joueur.getIdjoueur();
+            String queryJoueur="UPDATE "+MYBASE_TABLEjoueur_NAME+" SET gold="+joueur.getOr()+",xp="+joueur.getXp()+" WHERE idjoueur="+joueur.getId();
             myDb.execSQL(queryJoueur);
             Log.i("saveJoueur",joueur+" mis à jour dans la base");
             FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
             for(Objet obj : joueur.getInventaire()){
-                String queryInventaire="INSERT INTO "+MYBASE_TABLEinvent_NAME+"(idjoueur,idobjet) VALUES("+joueur.getIdjoueur()+","+fabrique.getIdObjet(obj.getClass().toString()+")");
+                String queryInventaire="INSERT INTO "+MYBASE_TABLEinvent_NAME+"(idjoueur,idobjet) VALUES("+joueur.getId()+","+fabrique.getIdObjet(obj.getClass().toString()+")");
                 Log.i("saveJoueur","Objet "+obj.getNom()+" enregistré pour "+joueur);
             }
             myDb.close();
@@ -137,7 +137,7 @@ public class RPGProjectDB extends SQLiteOpenHelper{
                     Log.i("getJoueur",res.toString());
                 }
                 FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
-                String queryInventaire="SELECT idobjet FROM "+MYBASE_TABLEinvent_NAME+" WHERE idjoueur="+res.getIdjoueur();
+                String queryInventaire="SELECT idobjet FROM "+MYBASE_TABLEinvent_NAME+" WHERE idjoueur="+res.getId();
                 Cursor resultInventaire=myDb.rawQuery(queryInventaire,null);
                 if(resultInventaire!=null){
                     while(resultInventaire.moveToNext()){

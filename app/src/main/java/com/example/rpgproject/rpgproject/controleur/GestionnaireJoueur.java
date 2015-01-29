@@ -35,7 +35,7 @@ public class GestionnaireJoueur {
     public Joueur getJoueur(int joueurId){
         Joueur res=null;
         for(Joueur j : listeJoueurs){
-            if(j.getIdjoueur()==joueurId){
+            if(j.getId()==joueurId){
                 res=j;
             }
         }

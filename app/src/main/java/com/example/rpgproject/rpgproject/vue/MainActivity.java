@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.rpgproject.rpgproject.R;
 import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
@@ -63,24 +64,28 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        /*
         locationManager= (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-        int lastX=prefs.getInt("x",0);
-        int lastY=prefs.getInt("y",0);
-        SharedPreferences.Editor prefEdit=prefs.edit();
-        provider=locationManager.getBestProvider(new Criteria(),false);
-        Location loc=locationManager.getLastKnownLocation(provider);
-
-        if(loc!=null){
-            float results[]=new float[0];
-            Location.distanceBetween(lastX,lastY,loc.getLatitude(),loc.getLongitude(),results);
-
+        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            Toast.makeText(getApplicationContext(),"GPS non activé, impossible de mettre à jour les coordonnées.", Toast.LENGTH_SHORT).show();
         }
-        */
+        else{
+            SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
+            double lastX=prefs.getFloat("x",0);
+            double lastY=prefs.getFloat("y",0);
+            SharedPreferences.Editor prefEdit=prefs.edit();
+            provider=locationManager.getBestProvider(new Criteria(),false);
+            Location loc=locationManager.getLastKnownLocation(provider);
 
+            if(loc!=null){
+                float results[]=new float[0];
+                Location.distanceBetween(lastX,lastY,loc.getLatitude(),loc.getLongitude(),results);
+                mainPlayer.addGold((int) results[0]);
+                gestionnaire.saveJoueur(mainPlayer.getId());
+                Toast.makeText(getApplicationContext(), Float.toString(results[0]), Toast.LENGTH_SHORT).show();
 
-
+            }
+            Toast.makeText(getApplicationContext(),"GPS activé, mais pas de coordonnées disponibles.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

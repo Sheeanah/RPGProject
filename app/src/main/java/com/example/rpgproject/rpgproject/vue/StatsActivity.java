@@ -46,7 +46,7 @@ public class StatsActivity extends ActionBarActivity {
                 j.equiper(obj);
             }
             j.setXp(1200);
-            gestionnaire.saveJoueur(j.getIdjoueur());
+            gestionnaire.saveJoueur(j.getId());
 
             TextView txt_stats_lvl=(TextView)findViewById(R.id.lbl_stats_lvl);
             txt_stats_lvl.setText(txt_stats_lvl.getText().toString()+" "+j.getNiveau());
