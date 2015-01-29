@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.example.rpgproject.rpgproject.R;
 import com.example.rpgproject.rpgproject.controleur.FabriqueObjet;
-import com.example.rpgproject.rpgproject.modele.Objet;
+import com.example.rpgproject.rpgproject.modele.Objets.Objet;
 
 
 public class ShopActivity extends ActionBarActivity {

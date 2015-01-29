@@ -94,7 +94,7 @@ public class Joueur extends Personnage {
     }
 
     @Override
-    public float getChance() {
+    public int getChance() {
         return 0;
     }
 

@@ -63,6 +63,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        /*
         locationManager= (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
         int lastX=prefs.getInt("x",0);
@@ -76,6 +77,7 @@ public class MainActivity extends ActionBarActivity {
             Location.distanceBetween(lastX,lastY,loc.getLatitude(),loc.getLongitude(),results);
 
         }
+        */
 
 
 
