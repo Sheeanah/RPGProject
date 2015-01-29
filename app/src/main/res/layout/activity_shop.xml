@@ -20,7 +20,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/lbl_money">
+        android:layout_above="@+id/lbl_money_name"
+        android:id="@+id/linearLayout2">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -191,9 +192,19 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Votre Or :"
-        android:id="@+id/lbl_money"
+        android:id="@+id/lbl_money_name"
         android:layout_gravity="center_horizontal"
         android:layout_above="@+id/btn_map"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="or"
+        android:id="@+id/lbl_money"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignEnd="@+id/btn_map" />
 
 </RelativeLayout>
