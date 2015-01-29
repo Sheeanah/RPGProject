@@ -41,7 +41,7 @@ public class ShopActivity extends ActionBarActivity {
          TextView lbl_sword_name=(TextView)findViewById(R.id.lbl_sword_name);
          lbl_sword_name.setText(epee.getNom());
          TextView lbl_sword_stats=(TextView)findViewById(R.id.lbl_sword_stats);
-         lbl_sword_stats.setText(epee.getBonusAtk());
+         lbl_sword_stats.setText(epee.getBonusAtk() + "");
 
          TextView lbl_money=(TextView)findViewById(R.id.lbl_money);
          lbl_money.setText(j.getOr());
