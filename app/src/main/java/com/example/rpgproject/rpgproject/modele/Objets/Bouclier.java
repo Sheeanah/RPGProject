@@ -1,8 +1,6 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
-
-import com.example.rpgproject.rpgproject.R;
 
 /**
  * Created by Dorian on 23/01/2015.
@@ -31,6 +29,11 @@ public abstract class Bouclier extends Objet{
     @Override
     public String getType(){
         return "Bouclier";
+    }
+
+    @Override
+    public int getPrixAchat(){
+        return super.getPrixAchat()*3;
     }
 
 

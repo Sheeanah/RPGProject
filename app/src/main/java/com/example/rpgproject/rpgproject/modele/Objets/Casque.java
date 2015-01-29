@@ -1,13 +1,12 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
 
 /**
  * Created by Dorian on 28/01/2015.
  */
-public abstract class Bijou extends Objet {
-
-    Bijou(Context context){
+public abstract class Casque extends Objet {
+    Casque(Context context) {
         super(context);
     }
 
@@ -33,6 +32,11 @@ public abstract class Bijou extends Objet {
 
     @Override
     public String getType() {
-        return "Bijou";
+        return "Casque";
+    }
+
+    @Override
+    public int getPrixAchat(){
+        return super.getPrixAchat()*2;
     }
 }

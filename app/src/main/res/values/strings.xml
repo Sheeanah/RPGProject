@@ -19,6 +19,8 @@
     <string name="str_objet_casque_simple">Casque simple</string>
     <string name="str_objet_bijou_vie">Bijou de vie</string>
     <string name="str_objet_bijou_chance">Bijou de chance</string>
+    <string name="str_monstre_orc">Orc</string>
+    <string name="str_monstre_gobelin">Gobelin</string>
     <string name="str_btn_mine">Mine</string>
     <string name="str_btn_forest">Forêt</string>
     <string name="str_btn_shop">Boutique</string>

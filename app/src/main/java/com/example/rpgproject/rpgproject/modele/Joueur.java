@@ -1,5 +1,7 @@
 package com.example.rpgproject.rpgproject.modele;
 
+import com.example.rpgproject.rpgproject.modele.Objets.Objet;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,7 +94,7 @@ public class Joueur extends Personnage {
     }
 
     @Override
-    public float getChance() {
+    public int getChance() {
         return 0;
     }
 

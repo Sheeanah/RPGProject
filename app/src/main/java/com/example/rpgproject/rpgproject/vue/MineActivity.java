@@ -87,9 +87,9 @@ public class MineActivity extends ActionBarActivity {
         return random.nextBoolean();
     }
 
-    public int getMoney(float luck)
+    public int getMoney(int luck)
     {
-        return (int) luck * 100;
+        return luck * 100;
     }
 
 }

@@ -3,7 +3,7 @@ package com.example.rpgproject.rpgproject.controleur;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.rpgproject.rpgproject.modele.Objet;
+import com.example.rpgproject.rpgproject.modele.Objets.Objet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +19,12 @@ public class FabriqueObjet {
     {
         super();
         lstObjets=new ArrayList<String>();
-        lstObjets.add("com.example.rpgproject.rpgproject.modele.Epee");
-        lstObjets.add("com.example.rpgproject.rpgproject.modele.BouclierSimple");
-        lstObjets.add("com.example.rpgproject.rpgproject.modele.ArmureSimple");
-        lstObjets.add("com.example.rpgproject.rpgproject.modele.CasqueSimple");
-        lstObjets.add("com.example.rpgproject.rpgproject.modele.BijouVie");
-        lstObjets.add("com.example.rpgproject.rpgproject.modele.BijouChance");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.Objets.Epee");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.Objets.BouclierSimple");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.Objets.ArmureSimple");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.Objets.CasqueSimple");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.Objets.BijouVie");
+        lstObjets.add("com.example.rpgproject.rpgproject.modele.Objets.BijouChance");
     }
 
     public Objet getObjet(int objId,Context context) {

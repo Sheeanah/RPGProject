@@ -1,4 +1,4 @@
-package com.example.rpgproject.rpgproject.modele;
+package com.example.rpgproject.rpgproject.modele.Objets;
 
 import android.content.Context;
 
@@ -18,4 +18,7 @@ public abstract class Objet {
     public abstract int getBonusVie();
     public abstract String getType();
     public abstract String getNom();
+    public int getPrixAchat(){
+        return 1;
+    }
 }

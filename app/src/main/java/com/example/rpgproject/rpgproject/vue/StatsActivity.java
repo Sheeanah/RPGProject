@@ -12,9 +12,8 @@ import android.widget.TextView;
 import com.example.rpgproject.rpgproject.R;
 import com.example.rpgproject.rpgproject.controleur.FabriqueObjet;
 import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
-import com.example.rpgproject.rpgproject.database.RPGProjectDB;
 import com.example.rpgproject.rpgproject.modele.Joueur;
-import com.example.rpgproject.rpgproject.modele.Objet;
+import com.example.rpgproject.rpgproject.modele.Objets.Objet;
 
 public class StatsActivity extends ActionBarActivity {
 
