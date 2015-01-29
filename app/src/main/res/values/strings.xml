@@ -28,5 +28,6 @@
     <string name="str_stats_gold">Or :</string>
     <string name="lbl_stats_xp">XP :</string>
     <string name="lbl_back_map">Retourner à la carte</string>
+    <string name="str_stats_inventory">Inventaire</string>
 
 </resources>

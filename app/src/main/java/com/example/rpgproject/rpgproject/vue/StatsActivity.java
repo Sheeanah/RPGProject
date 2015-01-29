@@ -3,10 +3,12 @@ package com.example.rpgproject.rpgproject.vue;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.rpgproject.rpgproject.R;
@@ -34,16 +36,6 @@ public class StatsActivity extends ActionBarActivity {
 
         Joueur j= gestionnaire.getMainJoueur();
         if(j!=null){
-            FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
-            Objet obj=fabrique.getObjet(0, getApplicationContext());
-            if(obj!=null){
-                j.equiper(obj);
-            }
-            obj=fabrique.getObjet(1,getApplicationContext());
-            if(obj!=null){
-                j.equiper(obj);
-            }
-            gestionnaire.saveJoueur(j.getId());
 
             TextView txt_stats_lvl=(TextView)findViewById(R.id.lbl_stats_lvl);
             txt_stats_lvl.setText(txt_stats_lvl.getText().toString()+" "+j.getNiveau());
@@ -65,6 +57,13 @@ public class StatsActivity extends ActionBarActivity {
 
             TextView txt_stats_gold=(TextView)findViewById(R.id.lbl_stats_gold);
             txt_stats_gold.setText(txt_stats_gold.getText().toString()+" "+j.getOr());
+
+            LinearLayout layout=(LinearLayout)findViewById(R.id.container_inventory_items);
+            for(Objet obj : j.getInventaire()){
+                TextView tv=new TextView(getApplicationContext());
+                tv.setText(obj.getNom());
+                layout.addView(tv);
+            }
         }
     }
 

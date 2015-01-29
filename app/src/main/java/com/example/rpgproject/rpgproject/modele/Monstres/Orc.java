@@ -44,7 +44,7 @@ public class Orc extends Monstre{
 
     @Override
     public int getChance() {
-        return 10;
+        return 75;
     }
 
     @Override

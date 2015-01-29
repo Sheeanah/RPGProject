@@ -44,7 +44,7 @@ public class Gobelin extends Monstre{
 
     @Override
     public int getChance() {
-        return 5;
+        return 50;
     }
 
     @Override

@@ -131,7 +131,13 @@ public class Joueur extends Personnage {
 
     @Override
     public int getChance() {
-        return 50;
+        int res = 75;
+        if(inventaire.size()>0){
+            for(Objet obj : inventaire){
+                res+=obj.getBonusChance();
+            }
+        }
+        return res;
     }
 
     @Override
