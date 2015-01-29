@@ -18,15 +18,13 @@ public class Joueur extends Personnage {
     private int xp;
     private int id;
     private String nom;
-    private GestionnaireJoueur gestionnaire;
 
-    public Joueur(int id,int xp, int or,String nom,Context context) {
+    public Joueur(int id,int xp, int or,String nom) {
         this.id = id;
         this.xp = xp;
         this.or = or;
         this.nom=nom;
         this.inventaire=new ArrayList<Objet>();
-        this.gestionnaire=GestionnaireJoueur.getUniqueInstance(context);
     }
 
     public int getId() {
@@ -35,7 +33,6 @@ public class Joueur extends Personnage {
 
     private void setId(int id) {
         this.id = id;
-        gestionnaire.saveJoueur(this.id);
     }
 
     public int getXp() {
@@ -44,7 +41,6 @@ public class Joueur extends Personnage {
 
     private void setXp(int xp) {
         this.xp = xp;
-        gestionnaire.saveJoueur(this.id);
     }
 
     public int getOr() {
@@ -53,7 +49,6 @@ public class Joueur extends Personnage {
 
     private void setOr(int or) {
         this.or = or;
-        gestionnaire.saveJoueur(this.id);
     }
 
     public List<Objet> getInventaire(){
@@ -70,7 +65,6 @@ public class Joueur extends Personnage {
 
     public void addGold(int or){
         this.or+=or;
-        gestionnaire.saveJoueur(this.id);
     }
 
     private boolean removeGold(int or){
@@ -90,7 +84,6 @@ public class Joueur extends Personnage {
         boolean res=false;
         if(removeGold(obj.getPrixAchat())){
             equiper(obj);
-            gestionnaire.saveJoueur(this.id);
             res=true;
         }
         return res;
