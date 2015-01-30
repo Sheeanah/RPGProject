@@ -161,8 +161,7 @@ public class ShopActivity extends ActionBarActivity {
 
     // Redirection vers la carte
     public void goToMap(){
-           Intent mapIntent=new Intent(this,MainActivity.class);
-            startActivity(mapIntent);
+        this.finish();
     }
 
     // Fonction d'achat

@@ -110,8 +110,7 @@ public class StatsActivity extends ActionBarActivity {
 
     // Redirection vers la carte
     public void goToMap(){
-        Intent mapIntent=new Intent(this,MainActivity.class);
-        startActivity(mapIntent);
+        this.finish();
     }
 
     // En pause, le jeu sauvegarde le joueur dans la base de donnée

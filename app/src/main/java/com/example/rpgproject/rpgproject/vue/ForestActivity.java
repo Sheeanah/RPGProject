@@ -323,7 +323,6 @@ public class ForestActivity extends ActionBarActivity {
 
     public void goToMap()
     {
-        Intent mapIntent=new Intent(this,MainActivity.class);
-        startActivity(mapIntent);
+        this.finish();
     }
 }

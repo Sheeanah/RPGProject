@@ -73,8 +73,7 @@ public class MineActivity extends ActionBarActivity {
     // Redirection vers la carte
 
     public void goToMap(){
-        Intent mapIntent=new Intent(this,MainActivity.class);
-        startActivity(mapIntent);
+        this.finish();
     }
 
     // Fonction de fouille
