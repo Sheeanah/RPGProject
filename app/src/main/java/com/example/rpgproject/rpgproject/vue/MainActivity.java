@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -92,7 +93,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         FabriqueObjet fabriqueObjet=FabriqueObjet.getUniqueInstance();
-        Toast.makeText(getApplicationContext(),fabriqueObjet.getObjet("BouclierSimple",getApplicationContext()).getNom(),Toast.LENGTH_LONG).show();
+        Log.i("info",fabriqueObjet.getObjet("BouclierSimple", getApplicationContext()).getClass().toString());
     }
 
 

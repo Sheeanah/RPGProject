@@ -113,7 +113,9 @@ public class RPGProjectDB extends SQLiteOpenHelper{
             Log.i("saveJoueur",joueur+" mis à jour dans la base");
             FabriqueObjet fabrique=FabriqueObjet.getUniqueInstance();
             for(Objet obj : joueur.getInventaire()){
-                String queryInventaire="INSERT INTO "+MYBASE_TABLEinvent_NAME+"(idjoueur,idobjet) VALUES("+joueur.getId()+","+fabrique.getIdObjet(obj.getClass().toString()+")");
+                int idObj=fabrique.getIdObjet( obj.getClass().toString().split(" ")[1] );
+                String queryInventaire="INSERT OR IGNORE INTO "+MYBASE_TABLEinvent_NAME+"(idjoueur,idobjet) VALUES("+joueur.getId()+","+idObj+")";
+                myDb.execSQL(queryInventaire);
                 Log.i("saveJoueur","Objet "+obj.getNom()+" enregistré pour "+joueur);
             }
             myDb.close();
