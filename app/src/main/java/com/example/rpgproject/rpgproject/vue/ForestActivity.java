@@ -271,6 +271,7 @@ public class ForestActivity extends ActionBarActivity {
             if(!ennemy_missed)
             {
                 // Applique les dommages et effectue la fin de tour
+                Toast.makeText(getApplicationContext(), "" + life_hero + " " + atk_monster + " " + def_hero, Toast.LENGTH_SHORT).show();
                 life_hero = damages(life_hero, atk_monster, def_hero);
                 end_turn(life_hero, life_monster, level_monster);
             }
