@@ -8,7 +8,7 @@ import com.example.rpgproject.rpgproject.R;
  * Created by Dorian on 28/01/2015.
  */
 public class Orc extends Monstre{
-    public Orc(int niveau,Context context){
+    public Orc(Context context){
         super(context);
     }
 

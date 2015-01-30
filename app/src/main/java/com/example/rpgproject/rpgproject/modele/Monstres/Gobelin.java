@@ -8,7 +8,7 @@ import com.example.rpgproject.rpgproject.R;
  * Created by Dorian on 28/01/2015.
  */
 public class Gobelin extends Monstre{
-    public Gobelin(int niveau,Context context){
+    public Gobelin(Context context){
         super(context);
     }
 

@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +26,7 @@ import com.example.rpgproject.rpgproject.modele.Joueur;
 public class MainActivity extends ActionBarActivity {
 
     private LocationManager locationManager;
-    private String provider;
+    private LocationListener myListener;
     private Joueur mainJoueur;
     private GestionnaireJoueur gestionnaireJoueur;
 
@@ -68,31 +70,46 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        processLocation();
+    }
+
+    public void processLocation(){
         locationManager= (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(getApplicationContext(),"GPS non activé, impossible de mettre à jour les coordonnées.", Toast.LENGTH_SHORT).show();
         }
         else{
-            SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-            double lastX=prefs.getFloat("x",0);
-            double lastY=prefs.getFloat("y",0);
-            SharedPreferences.Editor prefEdit=prefs.edit();
-            provider=locationManager.getBestProvider(new Criteria(),false);
-            Location loc=locationManager.getLastKnownLocation(provider);
+            // Define a listener that responds to location updates
+            myListener = new LocationListener() {
+                public void onLocationChanged(Location location) {
+                    SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
+                    double lastX=prefs.getFloat("x",0);
+                    double lastY=prefs.getFloat("y",0);
+                    SharedPreferences.Editor prefEdit=prefs.edit();
 
-            if(loc!=null){
-                float results[]=new float[0];
-                Location.distanceBetween(lastX,lastY,loc.getLatitude(),loc.getLongitude(),results);
-                mainJoueur.addGold((int) results[0]);
-                gestionnaireJoueur.saveJoueur(mainJoueur.getId());
-                Toast.makeText(getApplicationContext(), Float.toString(results[0]), Toast.LENGTH_SHORT).show();
+                    if(location!=null){
+                        float results[]=new float[10];
+                        Location.distanceBetween(lastX,lastY,location.getLatitude(),location.getLongitude(),results);
+                        mainJoueur.addGold((int) results[0]/1000);
+                        gestionnaireJoueur.saveJoueur(mainJoueur.getId());
+                        Toast.makeText(getApplicationContext(),"Distance parccourue : " + Float.toString(results[0]) + "m. Distance/1000 or ajouté.", Toast.LENGTH_SHORT).show();
+                        prefEdit.putFloat("x",(float)location.getLatitude());
+                        prefEdit.putFloat("y",(float)location.getLongitude());
+                        prefEdit.commit();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"GPS activé, mais pas de coordonnées disponibles.", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-            }
-            Toast.makeText(getApplicationContext(),"GPS activé, mais pas de coordonnées disponibles.", Toast.LENGTH_SHORT).show();
+                public void onStatusChanged(String provider, int status, Bundle extras) {}
+                public void onProviderEnabled(String provider) {}
+                public void onProviderDisabled(String provider) {}
+            };
+
+            // Register the listener with the Location Manager to receive location updates
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, myListener);
         }
-
-        FabriqueObjet fabriqueObjet=FabriqueObjet.getUniqueInstance();
-        Toast.makeText(getApplicationContext(),fabriqueObjet.getObjet("BouclierSimple",getApplicationContext()).getNom(),Toast.LENGTH_LONG).show();
     }
 
 
@@ -142,5 +159,6 @@ public class MainActivity extends ActionBarActivity {
         super.onPause();
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
         gestionnaireJoueur.saveJoueur(mainJoueur.getId());
+        locationManager.removeUpdates(myListener);
     }
 }

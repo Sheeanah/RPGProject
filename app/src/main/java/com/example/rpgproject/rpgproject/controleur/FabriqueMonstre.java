@@ -52,7 +52,7 @@ public class FabriqueMonstre{
         return res;
     }
 
-    public int getIdObjet(String monstreClass){
+    public int getIdMonstre(String monstreClass){
         return lstMonstres.indexOf(monstreClass);
     }
 

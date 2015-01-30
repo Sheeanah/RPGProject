@@ -268,11 +268,11 @@ public class ForestActivity extends ActionBarActivity {
     {
         // Modifie la vie du hero après application des dégats
         TextView life_to_update_hero=(TextView)findViewById(R.id.life_to_update_hero);
-        life_to_update_hero.setText(life_hero);
+        life_to_update_hero.setText(""+life_hero);
 
         // Modifie la vie du monstre après application des dégats
         TextView life_to_update_monster=(TextView)findViewById(R.id.life_to_update_monster);
-        life_to_update_monster.setText(life_monster);
+        life_to_update_monster.setText(""+life_monster);
 
         // Si la vie du montre est à 0
         if(life_monster == 0)

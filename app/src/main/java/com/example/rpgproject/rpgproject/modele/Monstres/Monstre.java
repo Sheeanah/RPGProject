@@ -18,8 +18,37 @@ public abstract class Monstre extends Personnage {
         this.context=context;
     }
 
-    public abstract int getXp();
-    public abstract int getGolds();
+    @Override
+    public int getNiveau(){
+        return 0;
+    }
+    @Override
+    public int getVie(){
+        return 0;
+    }
+    @Override
+    public int getAttaque(){
+        return 0;
+    }
+    @Override
+    public int getDefense(){
+        return 0;
+    }
+    @Override
+    public int getChance(){
+        return 0;
+    }
+    @Override
+    public String getNom(){
+        return null;
+    }
+
+    public int getXp(){
+        return 0;
+    }
+    public int getGolds(){
+        return 0;
+    }
     public List<Objet> getButin(){
         return null;
     }
