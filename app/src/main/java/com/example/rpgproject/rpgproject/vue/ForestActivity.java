@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rpgproject.rpgproject.R;
 import com.example.rpgproject.rpgproject.controleur.GestionnaireJoueur;
@@ -185,7 +186,20 @@ public class ForestActivity extends ActionBarActivity {
     // Renvoi la vie qu'il reste au personnage grâce à sa défense et l'attaque de l'adversaire
     public int damages(int life, int atk, int def)
     {
-        return life - atk + def;
+        int life_after = 0;
+        // Si l'attaque fait moins de dégat que la defense adverse
+        if(def > atk)
+        {
+            // La vie ne change pas
+            life_after = life;
+        }
+        else
+        {
+            // Sinon on compte les dégats infligés et la vie chance
+            int hit = atk - def;
+            life_after = life - hit;
+        }
+        return life_after;
     }
 
     // Action d'attaque
@@ -275,21 +289,24 @@ public class ForestActivity extends ActionBarActivity {
         life_to_update_monster.setText(""+life_monster);
 
         // Si la vie du montre est à 0
-        if(life_monster == 0)
+        if(life_monster <= 0)
         {
-            //int xp_win = level_monster * 100;
-            //Toast.makeText(getApplicationContext(), "Bien joué ! Vous gagnez " + xp_win + "XP, Toast.LENGTH_SHORT).show();
-            //mainJoueur.addXp(xp_win);
-            //Intent mapIntent=new Intent(this,MainActivity.class);
-            //startActivity(mapIntent);
+            int xp_win = level_monster * 10000;
+            Toast.makeText(getApplicationContext(), "Bien joué ! Vous gagnez " + xp_win + "XP", Toast.LENGTH_SHORT).show();
+            mainJoueur.addXp(xp_win);
+            goToMap();
         }
 
         // Si la vie du hero est à 0
-        if(life_hero == 0)
-        {
-            //Toast.makeText(getApplicationContext(), "Vous avez perdu le combat. ", Toast.LENGTH_SHORT).show();
-            //Intent mapIntent=new Intent(this,MainActivity.class);
-            //startActivity(mapIntent);
+        if(life_hero <= 0) {
+            Toast.makeText(getApplicationContext(), "Vous avez perdu le combat. ", Toast.LENGTH_SHORT).show();
+            goToMap();
         }
+    }
+
+    public void goToMap()
+    {
+        Intent mapIntent=new Intent(this,MainActivity.class);
+        startActivity(mapIntent);
     }
 }
