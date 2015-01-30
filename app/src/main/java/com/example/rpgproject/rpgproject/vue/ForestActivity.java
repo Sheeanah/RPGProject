@@ -42,11 +42,11 @@ public class ForestActivity extends ActionBarActivity {
 
         // On affiche la vie du joueur (qui sera modifiée)
         TextView life_to_update_hero=(TextView)findViewById(R.id.life_to_update_hero);
-        life_to_update_hero.setText(mainJoueur.getVie());
+        life_to_update_hero.setText(mainJoueur.getVie() + "");
 
         // On affiche la vie du joueur (fixe)
         TextView life_fix_hero=(TextView)findViewById(R.id.life_fix_hero);
-        life_fix_hero.setText(mainJoueur.getVie());
+        life_fix_hero.setText(mainJoueur.getVie() + "");
 
         // On affiche l'attaque du joueur
         TextView str_stats_atk_hero=(TextView)findViewById(R.id.str_stats_atk_hero);
@@ -70,11 +70,11 @@ public class ForestActivity extends ActionBarActivity {
 
         // On affiche la vie du monstre (qui sera modifiée)
         TextView life_to_update_monster=(TextView)findViewById(R.id.life_to_update_monster);
-        life_to_update_monster.setText(monster.getVie());
+        life_to_update_monster.setText(monster.getVie() + "");
 
         // On affiche la vie du monstre (fixe)
         TextView life_fix_monster=(TextView)findViewById(R.id.life_fix_monster);
-        life_fix_monster.setText(monster.getVie());
+        life_fix_monster.setText(monster.getVie() + "");
 
         // On affiche l'attaque du monstre
         TextView str_stats_atk_monster=(TextView)findViewById(R.id.str_stats_atk_monster);
