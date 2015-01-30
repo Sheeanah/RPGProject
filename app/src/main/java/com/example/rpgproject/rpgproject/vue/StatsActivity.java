@@ -1,6 +1,7 @@
 package com.example.rpgproject.rpgproject.vue;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -78,6 +79,7 @@ public class StatsActivity extends ActionBarActivity {
             for(Objet obj : mainJoueur.getInventaire()){
                 TextView tv=new TextView(getApplicationContext());
                 tv.setText(obj.getNom());
+                tv.setTextColor(Color.DKGRAY);
                 layout.addView(tv);
             }
         }

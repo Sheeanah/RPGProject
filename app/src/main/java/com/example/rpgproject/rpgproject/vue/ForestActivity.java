@@ -160,8 +160,8 @@ public class ForestActivity extends ActionBarActivity {
         // L'attaque est manquée de base
         boolean is_missed = true;
 
-        // On récupère un nombre entre zéro et la chance du personnage
-        int random = Random(0, (int)luck);
+        // On récupère un nombre entre zéro et 100
+        int random = Random(0, 100);
         // Si ce nombre est "dans la chance" du personnage
         if(random < luck)
         {

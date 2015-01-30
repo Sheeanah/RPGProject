@@ -7,8 +7,8 @@
     tools:context="com.example.rpgproject.rpgproject.vue.StatsActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/imageView3"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/personnage"
@@ -89,10 +89,6 @@
             android:id="@+id/container_inventory_items"
             android:focusableInTouchMode="true">
 
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/scroll_inventory_items" />
         </LinearLayout>
 
     </LinearLayout>

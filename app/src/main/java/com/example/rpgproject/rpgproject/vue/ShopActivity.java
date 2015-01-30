@@ -179,7 +179,7 @@ public class ShopActivity extends ActionBarActivity {
         else
         {
             // Sinon on lui dit
-             Toast.makeText(getApplicationContext(), "Vous n'avez pas asssez d'or", Toast.LENGTH_SHORT).show();
+             Toast.makeText(getApplicationContext(), "Achat impossible!", Toast.LENGTH_SHORT).show();
         }
     }
 

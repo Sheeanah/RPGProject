@@ -82,9 +82,11 @@ public class Joueur extends Personnage {
 
     public boolean acheter(Objet obj){
         boolean res=false;
-        if(removeGold(obj.getPrixAchat())){
-            equiper(obj);
-            res=true;
+        if(!getInventaire().contains(obj)){
+            if(removeGold(obj.getPrixAchat())){
+                equiper(obj);
+                res=true;
+            }
         }
         return res;
     }
