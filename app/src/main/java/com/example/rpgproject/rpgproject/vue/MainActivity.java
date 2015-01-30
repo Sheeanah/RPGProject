@@ -129,7 +129,7 @@ public class MainActivity extends ActionBarActivity {
             };
 
             //on ajoute le listener dans la liste des objets à notifier lors d'un changement de position
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, myListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, myListener);
         }
     }
 

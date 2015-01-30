@@ -71,6 +71,10 @@ public class ForestActivity extends ActionBarActivity {
         fabriqueMonstre=FabriqueMonstre.getUniqueInstance();
         final Monstre monster = random_monster();
 
+        //on affiche le nom du montre
+        TextView str_stats_nom_monster=(TextView)findViewById(R.id.lbl_monster_name);
+        str_stats_nom_monster.setText(monster.getNom());
+
         // On affiche le niveau du monstre
         TextView str_stats_lvl_monster=(TextView)findViewById(R.id.str_stats_lvl_monster);
         str_stats_lvl_monster.setText(str_stats_lvl_monster.getText().toString() + " " + monster.getNiveau());
