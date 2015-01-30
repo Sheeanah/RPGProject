@@ -35,9 +35,11 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //initialisation du joueur principal
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
         mainJoueur=gestionnaireJoueur.getMainJoueur();
 
+        //ajout des fonctions permettant de changer de vue
         ImageView img_mine=(ImageView)findViewById(R.id.img_mine);
         img_mine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,34 +72,53 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //fonction initialisant le listener pour la localisation
         processLocation();
     }
 
     public void processLocation(){
+        //on récupère le service de localisation de l'appareil
         locationManager= (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        //dans le cas où le service n'est pas actif, on retourne un message d'information
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(getApplicationContext(),"GPS non activé, impossible de mettre à jour les coordonnées.", Toast.LENGTH_SHORT).show();
         }
         else{
-            // Define a listener that responds to location updates
+            //on créé le listner
             myListener = new LocationListener() {
+                //fonction appelée lorsque l'appareil détecte un changement de position
                 public void onLocationChanged(Location location) {
+                    //on va récupérer les coordonnées stockées dans les préférences
                     SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
+                    //dans le cas où elles n'existent pas encore, on les initialise à 0
                     double lastX=prefs.getFloat("x",0);
                     double lastY=prefs.getFloat("y",0);
+
+                    //on récupère l'éditeur pour permettre de rentrer les nouvelles valeurs après le traitement
                     SharedPreferences.Editor prefEdit=prefs.edit();
 
+                    //on vérifié que la localisation reçue est correcte
                     if(location!=null){
+                        //tableau contant les résultat de la fonction suivante
                         float results[]=new float[10];
+
+                        //fonction remplissant le tableau reçu en paramètre, la distance en mètres entre les 2 points se trouvant dans la première case
                         Location.distanceBetween(lastX,lastY,location.getLatitude(),location.getLongitude(),results);
-                        mainJoueur.addGold((int) results[0]/1000);
+
+                        //on ajoute l'or au joueur en fonction de la distance, puis on sauvegarde le joueur dans la base
+                        mainJoueur.addGold((int) results[0]);
                         gestionnaireJoueur.saveJoueur(mainJoueur.getId());
-                        Toast.makeText(getApplicationContext(),"Distance parccourue : " + Float.toString(results[0]) + "m. Distance/1000 or ajouté.", Toast.LENGTH_SHORT).show();
+
+                        //message d'information indiquant la distance
+                        Toast.makeText(getApplicationContext(),"Distance parccourue : " + Float.toString(results[0]) + "m.", Toast.LENGTH_SHORT).show();
+
+                        //on met a jour les données stockées dans les préférences
                         prefEdit.putFloat("x",(float)location.getLatitude());
                         prefEdit.putFloat("y",(float)location.getLongitude());
                         prefEdit.commit();
                     }
                     else{
+                        //message d'information envoyé dans le cas où la localisation reçue n'est pas valable
                         Toast.makeText(getApplicationContext(),"GPS activé, mais pas de coordonnées disponibles.", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -107,7 +128,7 @@ public class MainActivity extends ActionBarActivity {
                 public void onProviderDisabled(String provider) {}
             };
 
-            // Register the listener with the Location Manager to receive location updates
+            //on ajoute le listener dans la liste des objets à notifier lors d'un changement de position
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, myListener);
         }
     }
@@ -135,6 +156,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //fonctions appelées par les boutons
     public void goToMine(){
         Intent mineIntent=new Intent(this,MineActivity.class);
         startActivity(mineIntent);
@@ -155,10 +177,13 @@ public class MainActivity extends ActionBarActivity {
         Intent statsIntent=new Intent(this,StatsActivity.class);
         startActivity(statsIntent);
     }
+    //fonction appelée lorsque l'activité passe en background
     public void onPause(){
         super.onPause();
+        //sauvegarde du joueur
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
         gestionnaireJoueur.saveJoueur(mainJoueur.getId());
+        //on annule la réception des changements de position
         locationManager.removeUpdates(myListener);
     }
 }
