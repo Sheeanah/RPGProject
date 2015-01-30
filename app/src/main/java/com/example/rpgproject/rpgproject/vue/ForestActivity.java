@@ -65,7 +65,7 @@ public class ForestActivity extends ActionBarActivity {
 
         // On affiche la chance du joueur
         TextView str_stats_luck_hero=(TextView)findViewById(R.id.str_stats_luck_hero);
-        str_stats_luck_hero.setText(str_stats_luck_hero.getText().toString()+" "+mainJoueur.getChance() + "%");
+        str_stats_luck_hero.setText(str_stats_luck_hero.getText().toString()+" "+mainJoueur.getChance());
 
         // On instancie la fabriqueMonstre et un monstre aléatoirement
         fabriqueMonstre=FabriqueMonstre.getUniqueInstance();
@@ -96,7 +96,7 @@ public class ForestActivity extends ActionBarActivity {
 
         // On affiche la chance du monstre
         TextView str_stats_luck_monster=(TextView)findViewById(R.id.str_stats_luck_monster);
-        str_stats_luck_monster.setText(str_stats_luck_monster.getText().toString()+" "+monster.getChance() + "%");
+        str_stats_luck_monster.setText(str_stats_luck_monster.getText().toString()+" "+monster.getChance());
 
         // Création de l'action clic pour attaquer
         Button btn_atk=(Button)findViewById(R.id.btn_atk);
