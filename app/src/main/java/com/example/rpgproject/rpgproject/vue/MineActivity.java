@@ -25,9 +25,11 @@ public class MineActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine);
 
+        // On instancie le gestionnaireJoueur et le joueur principal
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
         mainJoueur=gestionnaireJoueur.getMainJoueur();
 
+        // Création de l'action clic pour retourner vers la carte
         Button btn_map=(Button)findViewById(R.id.btn_map);
         btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +38,7 @@ public class MineActivity extends ActionBarActivity {
             }
         });
 
+        // Création de l'action clic pour fouiller
         Button btn_excavation=(Button)findViewById(R.id.btn_excavation);
         btn_excavation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,34 +70,44 @@ public class MineActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    // Redirection vers la carte
 
     public void goToMap(){
         Intent mapIntent=new Intent(this,MainActivity.class);
         startActivity(mapIntent);
     }
 
+    // Fonction de fouille
     public void doExcavations(Joueur j){
+        // On récupère aléatoirement un boolean pour savoir si le joueur trouve de l'or
         boolean isFound = getRandomBoolean();
 
+        // Si oui
         if(isFound)
         {
+            // On récupère le montant d'or gagné
             int money = getMoney(j.getChance());
+            // On l'affiche
             String text = "Vous gagnez " + money + " or";
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+            // On l'ajoute au joueur
             j.addGold(money);
         }
     }
 
+    // Renvoi true ou false aléatoirement
     public boolean getRandomBoolean() {
         Random random = new Random();
         return random.nextBoolean();
     }
 
+    // Renvoi l'argent que peut gagner le joueur en cliquant
     public int getMoney(int luck)
     {
         return luck * 100;
     }
 
+    // En pause, le jeu sauvegarde le joueur dans la base de donnée
     public void onPause(){
         super.onPause();
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());

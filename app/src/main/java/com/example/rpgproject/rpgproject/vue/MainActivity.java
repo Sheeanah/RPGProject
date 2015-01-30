@@ -33,9 +33,11 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // On instancie le gestionnaireJoueur et le joueur principal
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
         mainJoueur=gestionnaireJoueur.getMainJoueur();
 
+        // Création de l'action clic pour retourner vers la mine
         ImageView img_mine=(ImageView)findViewById(R.id.img_mine);
         img_mine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        // Création de l'action clic pour retourner vers la forêt
         ImageView img_forest=(ImageView)findViewById(R.id.img_forest);
         img_forest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        // Création de l'action clic pour retourner vers la boutique
         ImageView img_shop=(ImageView)findViewById(R.id.img_shop);
         img_shop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +64,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        // Création de l'action clic pour retourner vers les statistiques du joueur
         ImageView img_stats=(ImageView)findViewById(R.id.img_stats);
         img_stats.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,9 +95,6 @@ public class MainActivity extends ActionBarActivity {
             }
             Toast.makeText(getApplicationContext(),"GPS activé, mais pas de coordonnées disponibles.", Toast.LENGTH_SHORT).show();
         }
-
-        FabriqueObjet fabriqueObjet=FabriqueObjet.getUniqueInstance();
-        Toast.makeText(getApplicationContext(),fabriqueObjet.getObjet("BouclierSimple",getApplicationContext()).getNom(),Toast.LENGTH_LONG).show();
     }
 
 
@@ -118,26 +120,31 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Redirection vers la mine
     public void goToMine(){
         Intent mineIntent=new Intent(this,MineActivity.class);
         startActivity(mineIntent);
     }
+
+    // Redirection vers la forêt
     public void goToForest(){
         Intent mineIntent=new Intent(this,ForestActivity.class);
         startActivity(mineIntent);
     }
+
+    // Redirection vers la boutique
     public void goToShop(){
         Intent mineIntent=new Intent(this,ShopActivity.class);
         startActivity(mineIntent);
     }
-    public void goToArena(){
-        Intent mineIntent=new Intent(this,ArenaActivity.class);
-        startActivity(mineIntent);
-    }
+
+    // Redirection vers les statistiques du joueur
     public void goToStats(){
         Intent statsIntent=new Intent(this,StatsActivity.class);
         startActivity(statsIntent);
     }
+
+    // En pause, le jeu sauvegarde le joueur dans la base de donnée
     public void onPause(){
         super.onPause();
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());

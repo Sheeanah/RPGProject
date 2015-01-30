@@ -27,6 +27,7 @@ public class StatsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
+        // Création de l'action clic pour retourner vers la carte
         Button btn_map=(Button)findViewById(R.id.btn_map);
         btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,32 +36,42 @@ public class StatsActivity extends ActionBarActivity {
             }
         });
 
+        // On instancie le gestionnaireJoueur
         gestionnaireJoueur=GestionnaireJoueur.getUniqueInstance(getApplicationContext());
 
+        // On instancie le joueur, et s'il est trouvé
         mainJoueur= gestionnaireJoueur.getMainJoueur();
         if(mainJoueur!=null){
 
+            // On affiche son niveau
             TextView txt_stats_lvl=(TextView)findViewById(R.id.lbl_stats_lvl);
             txt_stats_lvl.setText(txt_stats_lvl.getText().toString() + " " + mainJoueur.getNiveau());
 
+            // On affiche son experience
             TextView txt_stats_xp=(TextView)findViewById(R.id.lbl_stats_xp);
             txt_stats_xp.setText(txt_stats_xp.getText().toString()+" "+mainJoueur.getXp());
 
+            // On affiche sa vie
             TextView txt_stats_life=(TextView)findViewById(R.id.lbl_stats_life);
             txt_stats_life.setText(txt_stats_life.getText().toString()+" "+mainJoueur.getVie());
 
+            // On affiche son attaque
             TextView txt_stats_atk=(TextView)findViewById(R.id.lbl_stats_atk);
             txt_stats_atk.setText(txt_stats_atk.getText().toString() + " " + mainJoueur.getAttaque());
 
+            // On affiche sa defense
             TextView txt_stats_def=(TextView)findViewById(R.id.lbl_stats_def);
             txt_stats_def.setText(txt_stats_def.getText().toString()+" "+mainJoueur.getDefense());
 
+            // On affiche sa chance
             TextView txt_stats_luck=(TextView)findViewById(R.id.lbl_stats_luck);
             txt_stats_luck.setText(txt_stats_luck.getText().toString()+" "+mainJoueur.getChance());
 
+            // On affiche son or
             TextView txt_stats_gold=(TextView)findViewById(R.id.lbl_stats_gold);
             txt_stats_gold.setText(txt_stats_gold.getText().toString() + " " + mainJoueur.getOr());
 
+            // On affiche son inventaire
             LinearLayout layout=(LinearLayout)findViewById(R.id.container_inventory_items);
             for(Objet obj : mainJoueur.getInventaire()){
                 TextView tv=new TextView(getApplicationContext());
@@ -93,10 +104,13 @@ public class StatsActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Redirection vers la carte
     public void goToMap(){
         Intent mapIntent=new Intent(this,MainActivity.class);
         startActivity(mapIntent);
     }
+
+    // En pause, le jeu sauvegarde le joueur dans la base de donnée
     @Override
     public void onPause(){
         super.onPause();
