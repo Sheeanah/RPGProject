@@ -28,6 +28,9 @@ public class ForestActivity extends ActionBarActivity {
     private FabriqueMonstre fabriqueMonstre;
     private Monstre monstre;
 
+    private int Life_monster;
+    private int Life_hero;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +44,11 @@ public class ForestActivity extends ActionBarActivity {
         TextView str_stats_lvl_hero=(TextView)findViewById(R.id.str_stats_lvl_hero);
         str_stats_lvl_hero.setText(str_stats_lvl_hero.getText().toString() + " " + mainJoueur.getNiveau());
 
+        //On met la vie du joueur dans la variable intermédiaire
+        Life_hero = mainJoueur.getVie();
+
         // On affiche la vie du joueur (qui sera modifiée)
-        TextView life_to_update_hero=(TextView)findViewById(R.id.life_to_update_hero);
+        final TextView life_to_update_hero=(TextView)findViewById(R.id.life_to_update_hero);
         life_to_update_hero.setText(mainJoueur.getVie() + "");
 
         // On affiche la vie du joueur (fixe)
@@ -69,8 +75,11 @@ public class ForestActivity extends ActionBarActivity {
         TextView str_stats_lvl_monster=(TextView)findViewById(R.id.str_stats_lvl_monster);
         str_stats_lvl_monster.setText(str_stats_lvl_monster.getText().toString() + " " + monster.getNiveau());
 
+        //On met la vie du monstre dans la variable intermédiaire
+        Life_monster = monster.getVie();
+
         // On affiche la vie du monstre (qui sera modifiée)
-        TextView life_to_update_monster=(TextView)findViewById(R.id.life_to_update_monster);
+        final TextView life_to_update_monster=(TextView)findViewById(R.id.life_to_update_monster);
         life_to_update_monster.setText(monster.getVie() + "");
 
         // On affiche la vie du monstre (fixe)
@@ -94,7 +103,7 @@ public class ForestActivity extends ActionBarActivity {
         btn_atk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                atk(mainJoueur.getVie(), mainJoueur.getAttaque(), mainJoueur.getDefense(), mainJoueur.getChance(), monster.getVie(), monster.getAttaque(), monster.getDefense(), monster.getChance(), monster.getNiveau());
+                atk(Life_hero, mainJoueur.getAttaque(), mainJoueur.getDefense(), mainJoueur.getChance(), Life_monster, monster.getAttaque(), monster.getDefense(), monster.getChance(), monster.getNiveau());
             }
         });
 
@@ -103,7 +112,7 @@ public class ForestActivity extends ActionBarActivity {
         btn_def.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                def(mainJoueur.getVie(), mainJoueur.getAttaque(), mainJoueur.getDefense(), mainJoueur.getChance(), monster.getVie(), monster.getAttaque(), monster.getDefense(), monster.getChance(), monster.getNiveau());
+                def(Life_hero, mainJoueur.getAttaque(), mainJoueur.getDefense(), mainJoueur.getChance(), Life_monster, monster.getAttaque(), monster.getDefense(), monster.getChance(), monster.getNiveau());
             }
         });
     }
@@ -281,13 +290,17 @@ public class ForestActivity extends ActionBarActivity {
     // Gère la fin de tour
     public void end_turn(int life_hero, int life_monster, int level_monster)
     {
-        // Modifie la vie du hero après application des dégats
+        // Modifie la vie du hero après application des dégats dans le texte
         TextView life_to_update_hero=(TextView)findViewById(R.id.life_to_update_hero);
         life_to_update_hero.setText(""+life_hero);
+        // Et dans la variable intermédiaire
+        Life_hero = life_hero;
 
-        // Modifie la vie du monstre après application des dégats
+        // Modifie la vie du monstre après application des dégats dans le texte
         TextView life_to_update_monster=(TextView)findViewById(R.id.life_to_update_monster);
         life_to_update_monster.setText(""+life_monster);
+        // Et dans la variable intermédiaire
+        Life_monster = life_monster;
 
         // Si la vie du montre est à 0
         if(life_monster <= 0)
